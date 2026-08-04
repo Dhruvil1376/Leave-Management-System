@@ -1,0 +1,6 @@
+@Leave_MS_HostAddress = http://localhost:5104
+
+GET {{Leave_MS_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

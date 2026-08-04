@@ -1,0 +1,294 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|d:\\b.tech\\sem-5\\.net core\\leave_ms\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|d:\\b.tech\\sem-5\\.net core\\leave_ms\\controllers\\leaverequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|solutionrelative:controllers\\leaverequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|d:\\b.tech\\sem-5\\.net core\\leave_ms\\models\\leaverequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|solutionrelative:models\\leaverequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|d:\\b.tech\\sem-5\\.net core\\leave_ms\\models\\leavetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|solutionrelative:models\\leavetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|d:\\b.tech\\sem-5\\.net core\\leave_ms\\models\\status.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|solutionrelative:models\\status.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|d:\\b.tech\\sem-5\\.net core\\leave_ms\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|d:\\b.tech\\sem-5\\.net core\\leave_ms\\models\\leavebalance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|solutionrelative:models\\leavebalance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|d:\\b.tech\\sem-5\\.net core\\leave_ms\\models\\leaveapproval.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|solutionrelative:models\\leaveapproval.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|d:\\b.tech\\sem-5\\.net core\\leave_ms\\models\\calendaryear.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|solutionrelative:models\\calendaryear.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|d:\\b.tech\\sem-5\\.net core\\leave_ms\\controllers\\leavebalancecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|solutionrelative:controllers\\leavebalancecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|d:\\b.tech\\sem-5\\.net core\\leave_ms\\controllers\\statuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|solutionrelative:controllers\\statuscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|d:\\b.tech\\sem-5\\.net core\\leave_ms\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|d:\\b.tech\\sem-5\\.net core\\leave_ms\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|solutionrelative:controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|d:\\b.tech\\sem-5\\.net core\\leave_ms\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|d:\\b.tech\\sem-5\\.net core\\leave_ms\\controllers\\leaveapprovalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|solutionrelative:controllers\\leaveapprovalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAIwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-02T11:17:40.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LeaveType.cs",
+              "DocumentMoniker": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Models\\LeaveType.cs",
+              "RelativeDocumentMoniker": "Models\\LeaveType.cs",
+              "ToolTip": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Models\\LeaveType.cs",
+              "RelativeToolTip": "Models\\LeaveType.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwBMAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-30T14:59:55.9Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Status.cs",
+              "DocumentMoniker": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Models\\Status.cs",
+              "RelativeDocumentMoniker": "Models\\Status.cs",
+              "ToolTip": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Models\\Status.cs",
+              "RelativeToolTip": "Models\\Status.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-30T14:59:43.611Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAA/wCQAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-30T14:59:20.243Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LeaveBalance.cs",
+              "DocumentMoniker": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Models\\LeaveBalance.cs",
+              "RelativeDocumentMoniker": "Models\\LeaveBalance.cs",
+              "ToolTip": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Models\\LeaveBalance.cs",
+              "RelativeToolTip": "Models\\LeaveBalance.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-30T14:46:32.899Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LeaveRequest.cs",
+              "DocumentMoniker": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Models\\LeaveRequest.cs",
+              "RelativeDocumentMoniker": "Models\\LeaveRequest.cs",
+              "ToolTip": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Models\\LeaveRequest.cs",
+              "RelativeToolTip": "Models\\LeaveRequest.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwAsAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-30T14:45:03.911Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "StatusController.cs",
+              "DocumentMoniker": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Controllers\\StatusController.cs",
+              "RelativeDocumentMoniker": "Controllers\\StatusController.cs",
+              "ToolTip": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Controllers\\StatusController.cs",
+              "RelativeToolTip": "Controllers\\StatusController.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAQwEUAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-30T14:17:43.38Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LeaveRequestController.cs",
+              "DocumentMoniker": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Controllers\\LeaveRequestController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LeaveRequestController.cs",
+              "ToolTip": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Controllers\\LeaveRequestController.cs",
+              "RelativeToolTip": "Controllers\\LeaveRequestController.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAuwF0AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-29T05:37:47.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CalendarYear.cs",
+              "DocumentMoniker": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Models\\CalendarYear.cs",
+              "RelativeDocumentMoniker": "Models\\CalendarYear.cs",
+              "ToolTip": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Models\\CalendarYear.cs",
+              "RelativeToolTip": "Models\\CalendarYear.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-30T15:00:51.05Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LeaveApproval.cs",
+              "DocumentMoniker": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Models\\LeaveApproval.cs",
+              "RelativeDocumentMoniker": "Models\\LeaveApproval.cs",
+              "ToolTip": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Models\\LeaveApproval.cs",
+              "RelativeToolTip": "Models\\LeaveApproval.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAYwBgAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-29T05:52:30.416Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RoleController.cs",
+              "DocumentMoniker": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Controllers\\RoleController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RoleController.cs",
+              "ToolTip": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Controllers\\RoleController.cs",
+              "RelativeToolTip": "Controllers\\RoleController.cs",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAIwEIAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-30T13:29:12.214Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-30T13:26:53.295Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "LeaveApprovalController.cs",
+              "DocumentMoniker": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Controllers\\LeaveApprovalController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LeaveApprovalController.cs",
+              "ToolTip": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Controllers\\LeaveApprovalController.cs",
+              "RelativeToolTip": "Controllers\\LeaveApprovalController.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAmwBgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-29T05:51:29.722Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "LeaveBalanceController.cs",
+              "DocumentMoniker": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Controllers\\LeaveBalanceController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LeaveBalanceController.cs",
+              "ToolTip": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Controllers\\LeaveBalanceController.cs",
+              "RelativeToolTip": "Controllers\\LeaveBalanceController.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAmwDYAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-29T05:22:15.292Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAswCoAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-29T05:22:43.011Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

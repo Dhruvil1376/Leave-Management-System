@@ -1,0 +1,644 @@
+[
+  {
+    "ContainingType": "Leave_MS.Controllers.CalendarYearController",
+    "Method": "CreateCalendarYear",
+    "RelativePath": "api/CalendarYear/CreateCalendarYear",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "calendarYear",
+        "Type": "Leave_MS.Models.CalendarYear",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.CalendarYearController",
+    "Method": "DeleteCalendarYear",
+    "RelativePath": "api/CalendarYear/DeleteCalendarYear/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.CalendarYearController",
+    "Method": "GetAllCalendarYear",
+    "RelativePath": "api/CalendarYear/GetAllCalendarYear",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.CalendarYearController",
+    "Method": "GetById",
+    "RelativePath": "api/CalendarYear/GetById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.CalendarYearController",
+    "Method": "UpdateCalendarYear",
+    "RelativePath": "api/CalendarYear/UpdateCalendarYear/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "calendarYear",
+        "Type": "Leave_MS.Models.CalendarYear",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveApprovalController",
+    "Method": "CreateLeaveApproval",
+    "RelativePath": "api/LeaveApproval/CreateLeaveApproval",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "la",
+        "Type": "Leave_MS.Models.LeaveApproval",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveApprovalController",
+    "Method": "DeleteLeaveApproval",
+    "RelativePath": "api/LeaveApproval/DeleteLeaveApproval/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveApprovalController",
+    "Method": "GetLeaveApproval",
+    "RelativePath": "api/LeaveApproval/GetLeaveApproval/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveApprovalController",
+    "Method": "GetLeaveApprovals",
+    "RelativePath": "api/LeaveApproval/GetLeaveApprovals",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveApprovalController",
+    "Method": "UpdateLeaveApproval",
+    "RelativePath": "api/LeaveApproval/UpdateLeaveApproval/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "la",
+        "Type": "Leave_MS.Models.LeaveApproval",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveBalanceController",
+    "Method": "CreateLeaveBalance",
+    "RelativePath": "api/LeaveBalance/CreateLeaveBalance",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "leaveBalance",
+        "Type": "Leave_MS.Models.LeaveBalance",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveBalanceController",
+    "Method": "DeleteLeaveBalance",
+    "RelativePath": "api/LeaveBalance/DeleteLeaveBalance/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveBalanceController",
+    "Method": "GetLeaveBalance",
+    "RelativePath": "api/LeaveBalance/GetLeaveBalance/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveBalanceController",
+    "Method": "GetLeaveBalances",
+    "RelativePath": "api/LeaveBalance/GetLeaveBalances",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveBalanceController",
+    "Method": "UpdateLeaveBalance",
+    "RelativePath": "api/LeaveBalance/UpdateLeaveBalance/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "leaveBalance",
+        "Type": "Leave_MS.Models.LeaveBalance",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveRequestController",
+    "Method": "CreateLeaveRequest",
+    "RelativePath": "api/LeaveRequest/CreateLeaveRequest",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lr",
+        "Type": "Leave_MS.Models.LeaveRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveRequestController",
+    "Method": "DeleteLeaveRequest",
+    "RelativePath": "api/LeaveRequest/DeleteLeaveRequest/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveRequestController",
+    "Method": "GetLeaveRequest",
+    "RelativePath": "api/LeaveRequest/GetLeaveRequest/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveRequestController",
+    "Method": "GetLeaveRequests",
+    "RelativePath": "api/LeaveRequest/GetLeaveRequests",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveRequestController",
+    "Method": "UpdateLeaveRequest",
+    "RelativePath": "api/LeaveRequest/UpdateLeaveRequest/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "lr",
+        "Type": "Leave_MS.Models.LeaveRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveTypeController",
+    "Method": "AddLeaveType",
+    "RelativePath": "api/LeaveType/AddLeaveType",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lt",
+        "Type": "Leave_MS.Models.LeaveType",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Leave_MS.Models.LeaveType",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveTypeController",
+    "Method": "DeleteLeaveType",
+    "RelativePath": "api/LeaveType/DeleteLeaveType/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveTypeController",
+    "Method": "GetLeaveType",
+    "RelativePath": "api/LeaveType/GetLeaveType/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveTypeController",
+    "Method": "GetLeaveTypes",
+    "RelativePath": "api/LeaveType/GetLeaveTypes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveTypeController",
+    "Method": "UpdateLeaveType",
+    "RelativePath": "api/LeaveType/UpdateLeaveType/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "lt",
+        "Type": "Leave_MS.Models.LeaveType",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.RoleController",
+    "Method": "CreateRole",
+    "RelativePath": "api/Role/CreateRole",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "role",
+        "Type": "Leave_MS.Models.Role",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.RoleController",
+    "Method": "DeleteRole",
+    "RelativePath": "api/Role/DeleteRole/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.RoleController",
+    "Method": "GetRole",
+    "RelativePath": "api/Role/GetRole/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.RoleController",
+    "Method": "GetRoles",
+    "RelativePath": "api/Role/GetRoles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.RoleController",
+    "Method": "UpdateRole",
+    "RelativePath": "api/Role/UpdateRole/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "role",
+        "Type": "Leave_MS.Models.Role",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.StatusController",
+    "Method": "CreateStatus",
+    "RelativePath": "api/Status/CreateStatus",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "status",
+        "Type": "Leave_MS.Models.Status",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.StatusController",
+    "Method": "DeleteStatus",
+    "RelativePath": "api/Status/DeleteStatus/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.StatusController",
+    "Method": "GetAllStatus",
+    "RelativePath": "api/Status/GetAllStatus",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.StatusController",
+    "Method": "GetStatus",
+    "RelativePath": "api/Status/GetStatus/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.StatusController",
+    "Method": "UpdateStatus",
+    "RelativePath": "api/Status/UpdateStatus/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "status",
+        "Type": "Leave_MS.Models.Status",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.UserController",
+    "Method": "CreateUser",
+    "RelativePath": "api/User/CreateUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "Leave_MS.Models.User",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.UserController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/User/DeleteUser/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.UserController",
+    "Method": "GetUser",
+    "RelativePath": "api/User/GetUser/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.UserController",
+    "Method": "GetUsers",
+    "RelativePath": "api/User/GetUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.UserController",
+    "Method": "UpdateUser",
+    "RelativePath": "api/User/UpdateUser/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "user",
+        "Type": "Leave_MS.Models.User",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
