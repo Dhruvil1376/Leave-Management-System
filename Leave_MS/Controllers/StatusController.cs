@@ -1,6 +1,6 @@
 ﻿using Leave_MS.Data;
 using Leave_MS.Models;
-using Microsoft.AspNetCore.Http;
+using Leave_MS.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,56 +20,80 @@ namespace Leave_MS.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllStatus()
         {
-            var status=await _context.Statuses.ToListAsync();
+            var status=await _context.Statuses
+                .Select(s => new StatusDTO
+                {
+                    StatusId = s.StatusId,
+                    StatusName = s.StatusName,
+                    StatusCssClass = s.StatusCssClass
+                })
+                .ToListAsync();
             return Ok(status);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetStatus(int id)
         {
-            var status = await _context.Statuses.FindAsync(id);
+            var status = await _context.Statuses
+                .Where(s => s.StatusId == id)
+                .Select(s => new StatusDTO
+                {
+                    StatusId = s.StatusId,
+                    StatusName = s.StatusName,
+                    StatusCssClass = s.StatusCssClass
+                })
+                .FirstOrDefaultAsync();
 
-            if(status==null)
-            {
-                return NotFound();
-            }
+            if (status == null)
+                return NotFound("Status not found!!!");
 
             return Ok(status);
-
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateStatus(Status status)
+        public async Task<IActionResult> CreateStatus(StatusDTO status)
         {
             if (status == null)
-                return BadRequest();
+                return BadRequest("Status data is required!!!");
 
-            if(await _context.Statuses.AnyAsync(s=> s.StatusName == status.StatusName))
-                return BadRequest("Status Already Exists!!!");
+            if (string.IsNullOrWhiteSpace(status.StatusName))
+                return BadRequest("Status name is required!!!");
 
-            _context.Statuses.Add(status);
+            if (await _context.Statuses.AnyAsync(s => s.StatusName == status.StatusName))
+                return BadRequest("Status already exists!!!");
+
+            var newStatus = new Status()
+            {
+                StatusName = status.StatusName,
+                StatusCssClass = status.StatusCssClass
+            };
+
+            _context.Statuses.Add(newStatus);
             await _context.SaveChangesAsync();
 
-            return Ok(status);
+            return Ok(newStatus);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateStatus(int id, Status status)
+        public async Task<IActionResult> UpdateStatus(int id, StatusDTO status)
         {
-            if (id != status.StatusId)
-                return BadRequest("ID Mismatch!!!");
+            if (status == null)
+                return BadRequest("Status data is required!!!");
 
-            var oldStatus = await _context.Statuses.FindAsync(id);
+            if (string.IsNullOrWhiteSpace(status.StatusName))
+                return BadRequest("Status name is required!!!");
 
-            if (oldStatus == null)
-                return NotFound("Role not found!!!");
+            var existingStatus = await _context.Statuses.FindAsync(id);
 
-            oldStatus.StatusName = status.StatusName;
-            oldStatus.StatusCssClass = status.StatusCssClass;
+            if (existingStatus == null)
+                return NotFound("Invalid ID");
+
+            existingStatus.StatusName = status.StatusName;
+            existingStatus.StatusCssClass = status.StatusCssClass;
 
             await _context.SaveChangesAsync();
 
-            return Ok(oldStatus);
+            return Ok(existingStatus);
         }
 
         [HttpDelete("{id}")]

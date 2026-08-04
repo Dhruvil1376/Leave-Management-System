@@ -1,8 +1,8 @@
 ﻿using Leave_MS.Data;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Leave_MS.Models;
+using Leave_MS.DTOs;
 
 namespace Leave_MS.Controllers
 {
@@ -18,42 +18,65 @@ namespace Leave_MS.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetRoles()
+        public async Task<IActionResult> GetAllRoles()
         {
-            var roles = await _context.Roles.ToListAsync();
+            var roles = await _context.Roles
+                .Select(r => new RoleDTO
+                {
+                    RoleId = r.RoleId,
+                    RoleName = r.RoleName,
+                    Description = r.Description
+                })
+                .ToListAsync();
+
             return Ok(roles);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetRole(int id)
         {
-            var role = await _context.Roles.FindAsync(id);
+            var role = await _context.Roles
+                .Where(r => r.RoleId == id)
+                .Select(r => new RoleDTO { 
+                    RoleId = r.RoleId,
+                    RoleName = r.RoleName,
+                    Description = r.Description
+                })
+                .FirstOrDefaultAsync();
 
             if (role == null)
             {
-                return NotFound();
+                return NotFound("Role not found!!!");
             }
 
             return Ok(role);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateRole(Role role)
+        public async Task<IActionResult> CreateRole(RoleDTO role)
         {
+
             if(role==null)
-                return BadRequest();
+                return BadRequest("Role Data is Required!!!");
 
             if (await _context.Roles.AnyAsync(r => r.RoleName == role.RoleName))
                 return BadRequest("Role already exists.");
 
-            _context.Roles.Add(role);
+            var newRole = new Role()
+            {
+                RoleId = role.RoleId,
+                RoleName = role.RoleName,
+                Description = role.Description
+            };
+
+            _context.Roles.Add(newRole);
             await _context.SaveChangesAsync();
 
-            return Ok(role);
+            return Ok(newRole);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateRole(int id, Role role)
+        public async Task<IActionResult> UpdateRole(int id, RoleDTO role)
         {
             if (id != role.RoleId)
                 return BadRequest("ID Mismatch!!!");
@@ -67,7 +90,14 @@ namespace Leave_MS.Controllers
             oldRole.Description = role.Description;
             await _context.SaveChangesAsync();
 
-            return Ok(oldRole);
+            var updatedRole = new RoleDTO
+            {
+                RoleId = oldRole.RoleId,
+                RoleName = oldRole.RoleName,
+                Description = oldRole.Description
+            };
+
+            return Ok(updatedRole);
         }
 
         [HttpDelete("{id}")]

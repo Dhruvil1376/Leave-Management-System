@@ -25,16 +25,9 @@ namespace Leave_MS.Models
         [Required,MaxLength (500)]
         public string ProfileImage {  get; set; } = string.Empty;
 
-        [JsonIgnore]
-        public Role? Role { get; set; }
-
-        [JsonIgnore]
+        public Role Role { get; set; }
         public ICollection<LeaveBalance>? LeaveBalances { get; set; } = new List<LeaveBalance>();
-
-        [JsonIgnore]
         public ICollection<LeaveRequest>? LeaveRequests { get; set; } = new List<LeaveRequest>();
-
-        [JsonIgnore]
         public ICollection<LeaveApproval>? LeaveApprovals { get; set; } = new List<LeaveApproval>();
     }
 }

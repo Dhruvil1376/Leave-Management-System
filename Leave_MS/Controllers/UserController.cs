@@ -1,5 +1,6 @@
 ﻿using Leave_MS.Data;
 using Leave_MS.Models;
+using Leave_MS.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,16 +17,42 @@ namespace Leave_MS.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetUsers()
+        public async Task<IActionResult> GetAllUsers()
         {
-            var users = await _context.Users.Include(r=>r.Role).ToListAsync();
+            var users = await _context.Users
+                .Select(u => new UserDTO
+                {
+                    UserId = u.UserId,
+                    FullName = u.FullName,
+                    Email = u.Email,
+                    Password = u.Password,
+                    IsActive = u.isActive,
+                    ProfileImage = u.ProfileImage,
+                    RoleId = u.RoleId,
+                    RoleName = u.Role.RoleName
+                })
+                .ToListAsync();
             return Ok(users);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(int id)
         {
-            var user = await _context.Users.Include(r=>r.Role).FirstOrDefaultAsync(u=>u.UserId==id);
+            var user = await _context.Users
+                .Where(u => u.UserId == id)
+                .Select
+                (u => new UserDTO
+                {
+                    UserId = u.UserId,
+                    FullName = u.FullName,
+                    Email = u.Email,
+                    Password = u.Password,
+                    IsActive = u.isActive,
+                    ProfileImage = u.ProfileImage,
+                    RoleId = u.RoleId,
+                    RoleName = u.Role.RoleName
+                })
+                .FirstOrDefaultAsync();
 
             if (user == null)
                 return NotFound();
@@ -34,34 +61,67 @@ namespace Leave_MS.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateUser(User user)
+        public async Task<IActionResult> CreateUser(UserDTO user)
         {
             if (user == null)
-                return BadRequest();
+                return BadRequest("User data is required!!!");
 
-            _context.Users.Add(user);
+            var newUser = new User()
+            {
+                FullName = user.FullName,
+                Email = user.Email,
+                Password = user.Password,
+                isActive = user.IsActive,
+                ProfileImage = user.ProfileImage,
+                RoleId = user.RoleId
+            };
+
+            _context.Users.Add(newUser);
             await _context.SaveChangesAsync();
 
-            return Ok(user);
+            return Ok(newUser);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, User user)
+        public async Task<IActionResult> UpdateUser(int id, UserDTO user)
         {
             if (id != user.UserId)
                 return BadRequest("ID Mismatch!!!");
 
-            var oldUser = await _context.Users.FindAsync(id);
+            var oldUser = await _context.Users.FindAsync(id);            
 
-            if(oldUser == null)
+            if (oldUser == null)
                 return NotFound("User not found!!!");
+
+            if (await _context.Users.AnyAsync(u => u.Email == user.Email && u.UserId != id))
+                return BadRequest("Email already exists!!!");
+
+            if (!await _context.Roles.AnyAsync(r => r.RoleId == user.RoleId))
+                return BadRequest("Invalid RoleId!!!");
 
             oldUser.FullName = user.FullName;
             oldUser.Email = user.Email;
             oldUser.ProfileImage = user.ProfileImage;
+            oldUser.isActive = user.IsActive; 
+            oldUser.RoleId = user.RoleId;
+
             await _context.SaveChangesAsync();
 
-            return Ok(oldUser);
+            var updatedUser = await _context.Users
+                .Where(u => u.UserId == id)
+                .Select(u => new UserDTO
+                {
+                    UserId = u.UserId,
+                    FullName = u.FullName,
+                    Email = u.Email,
+                    IsActive = u.isActive,
+                    ProfileImage = u.ProfileImage,
+                    RoleId = u.RoleId,
+                    RoleName = u.Role.RoleName
+                })
+                .FirstOrDefaultAsync();
+
+            return Ok(updatedUser);
         }
 
         [HttpDelete("{id}")]

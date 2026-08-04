@@ -12,8 +12,6 @@ namespace Leave_MS.Models
 
         [MaxLength(100)]
         public string Description { get; set; } = string.Empty;
-
-        [JsonIgnore]
         public ICollection<User>? Users { get; set; } = new List<User>();
     }
 }

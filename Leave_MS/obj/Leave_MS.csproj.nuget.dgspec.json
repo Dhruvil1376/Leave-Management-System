@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Leave_MS.csproj": {}
+    "D:\\B.TECH\\SEM-5\\.NET_Core\\Leave Management System\\Leave_MS\\Leave_MS.csproj": {}
   },
   "projects": {
-    "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Leave_MS.csproj": {
+    "D:\\B.TECH\\SEM-5\\.NET_Core\\Leave Management System\\Leave_MS\\Leave_MS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Leave_MS.csproj",
+        "projectUniqueName": "D:\\B.TECH\\SEM-5\\.NET_Core\\Leave Management System\\Leave_MS\\Leave_MS.csproj",
         "projectName": "Leave_MS",
-        "projectPath": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\Leave_MS.csproj",
+        "projectPath": "D:\\B.TECH\\SEM-5\\.NET_Core\\Leave Management System\\Leave_MS\\Leave_MS.csproj",
         "packagesPath": "C:\\Users\\Yash\\.nuget\\packages\\",
-        "outputPath": "D:\\B.TECH\\SEM-5\\.NET Core\\Leave_MS\\obj\\",
+        "outputPath": "D:\\B.TECH\\SEM-5\\.NET_Core\\Leave Management System\\Leave_MS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
