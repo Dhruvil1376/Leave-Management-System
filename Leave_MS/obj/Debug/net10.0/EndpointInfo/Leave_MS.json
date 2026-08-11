@@ -61,17 +61,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CalendarYear"
+                "$ref": "#/components/schemas/CalendarYearDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CalendarYear"
+                "$ref": "#/components/schemas/CalendarYearDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CalendarYear"
+                "$ref": "#/components/schemas/CalendarYearDTO"
               }
             }
           },
@@ -108,17 +108,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CalendarYear"
+                "$ref": "#/components/schemas/CalendarYearDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CalendarYear"
+                "$ref": "#/components/schemas/CalendarYearDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CalendarYear"
+                "$ref": "#/components/schemas/CalendarYearDTO"
               }
             }
           },
@@ -158,7 +158,19 @@
         }
       }
     },
-    "/api/LeaveApproval/GetLeaveApprovals": {
+    "/api/Dashboard/TotalEmployees": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/LeaveApproval/GetAllLeaveApprovals": {
       "get": {
         "tags": [
           "LeaveApproval"
@@ -206,17 +218,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveApproval"
+                "$ref": "#/components/schemas/LeaveApprovalDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveApproval"
+                "$ref": "#/components/schemas/LeaveApprovalDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveApproval"
+                "$ref": "#/components/schemas/LeaveApprovalDTO"
               }
             }
           },
@@ -253,17 +265,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveApproval"
+                "$ref": "#/components/schemas/LeaveApprovalDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveApproval"
+                "$ref": "#/components/schemas/LeaveApprovalDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveApproval"
+                "$ref": "#/components/schemas/LeaveApprovalDTO"
               }
             }
           },
@@ -303,7 +315,7 @@
         }
       }
     },
-    "/api/LeaveBalance/GetLeaveBalances": {
+    "/api/LeaveBalance/GetAllLeaveBalances": {
       "get": {
         "tags": [
           "LeaveBalance"
@@ -351,17 +363,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveBalance"
+                "$ref": "#/components/schemas/LeaveBalanceDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveBalance"
+                "$ref": "#/components/schemas/LeaveBalanceDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveBalance"
+                "$ref": "#/components/schemas/LeaveBalanceDTO"
               }
             }
           },
@@ -398,17 +410,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveBalance"
+                "$ref": "#/components/schemas/LeaveBalanceDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveBalance"
+                "$ref": "#/components/schemas/LeaveBalanceDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveBalance"
+                "$ref": "#/components/schemas/LeaveBalanceDTO"
               }
             }
           },
@@ -448,7 +460,7 @@
         }
       }
     },
-    "/api/LeaveRequest/GetLeaveRequests": {
+    "/api/LeaveRequest/GetAllLeaveRequests": {
       "get": {
         "tags": [
           "LeaveRequest"
@@ -496,17 +508,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveRequest"
+                "$ref": "#/components/schemas/LeaveRequestDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveRequest"
+                "$ref": "#/components/schemas/LeaveRequestDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveRequest"
+                "$ref": "#/components/schemas/LeaveRequestDTO"
               }
             }
           },
@@ -543,17 +555,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveRequest"
+                "$ref": "#/components/schemas/LeaveRequestDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveRequest"
+                "$ref": "#/components/schemas/LeaveRequestDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveRequest"
+                "$ref": "#/components/schemas/LeaveRequestDTO"
               }
             }
           },
@@ -593,7 +605,7 @@
         }
       }
     },
-    "/api/LeaveType/GetLeaveTypes": {
+    "/api/LeaveType/GetAllLeaveTypes": {
       "get": {
         "tags": [
           "LeaveType"
@@ -641,17 +653,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveType"
+                "$ref": "#/components/schemas/LeaveTypeDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveType"
+                "$ref": "#/components/schemas/LeaveTypeDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveType"
+                "$ref": "#/components/schemas/LeaveTypeDTO"
               }
             }
           },
@@ -659,24 +671,7 @@
         },
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/LeaveType"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LeaveType"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LeaveType"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -705,17 +700,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveType"
+                "$ref": "#/components/schemas/LeaveTypeDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveType"
+                "$ref": "#/components/schemas/LeaveTypeDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaveType"
+                "$ref": "#/components/schemas/LeaveTypeDTO"
               }
             }
           },
@@ -755,7 +750,7 @@
         }
       }
     },
-    "/api/Role/GetRoles": {
+    "/api/Role/GetAllRoles": {
       "get": {
         "tags": [
           "Role"
@@ -803,17 +798,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Role"
+                "$ref": "#/components/schemas/RoleDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Role"
+                "$ref": "#/components/schemas/RoleDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Role"
+                "$ref": "#/components/schemas/RoleDTO"
               }
             }
           },
@@ -850,17 +845,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Role"
+                "$ref": "#/components/schemas/RoleDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Role"
+                "$ref": "#/components/schemas/RoleDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Role"
+                "$ref": "#/components/schemas/RoleDTO"
               }
             }
           },
@@ -948,17 +943,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Status"
+                "$ref": "#/components/schemas/StatusDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Status"
+                "$ref": "#/components/schemas/StatusDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Status"
+                "$ref": "#/components/schemas/StatusDTO"
               }
             }
           },
@@ -995,17 +990,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Status"
+                "$ref": "#/components/schemas/StatusDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Status"
+                "$ref": "#/components/schemas/StatusDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Status"
+                "$ref": "#/components/schemas/StatusDTO"
               }
             }
           },
@@ -1045,7 +1040,7 @@
         }
       }
     },
-    "/api/User/GetUsers": {
+    "/api/User/GetAllUsers": {
       "get": {
         "tags": [
           "User"
@@ -1093,17 +1088,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserDTO"
               }
             }
           },
@@ -1140,17 +1135,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserDTO"
               }
             }
           },
@@ -1193,12 +1188,7 @@
   },
   "components": {
     "schemas": {
-      "CalendarYear": {
-        "required": [
-          "calendarYearName",
-          "startDate",
-          "endDate"
-        ],
+      "CalendarYearDTO": {
         "type": "object",
         "properties": {
           "calendarYearId": {
@@ -1210,7 +1200,6 @@
             "format": "int32"
           },
           "calendarYearName": {
-            "maxLength": 20,
             "type": "string"
           },
           "startDate": {
@@ -1223,12 +1212,7 @@
           }
         }
       },
-      "LeaveApproval": {
-        "required": [
-          "leaveRequestId",
-          "approvedBy",
-          "action"
-        ],
+      "LeaveApprovalDTO": {
         "type": "object",
         "properties": {
           "approvalId": {
@@ -1238,6 +1222,22 @@
               "string"
             ],
             "format": "int32"
+          },
+          "action": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "comments": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "actionDate": {
+            "type": "string",
+            "format": "date-time"
           },
           "leaveRequestId": {
             "pattern": "^-?(?:0|[1-9]\\d*)$",
@@ -1255,54 +1255,18 @@
             ],
             "format": "int32"
           },
-          "action": {
-            "maxLength": 20,
-            "type": "string"
-          },
-          "comments": {
-            "maxLength": 200,
-            "type": "string"
-          },
-          "actionDate": {
-            "type": "string",
-            "format": "date-time"
+          "approvedByUserName": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         }
       },
-      "LeaveBalance": {
-        "required": [
-          "userId",
-          "leaveTypeId",
-          "calendarYearId",
-          "allocatedDays"
-        ],
+      "LeaveBalanceDTO": {
         "type": "object",
         "properties": {
           "leaveBalanceId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
-            "format": "int32"
-          },
-          "userId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
-            "format": "int32"
-          },
-          "leaveTypeId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
-            "format": "int32"
-          },
-          "calendarYearId": {
             "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "integer",
@@ -1325,27 +1289,6 @@
               "string"
             ],
             "format": "int32"
-          }
-        }
-      },
-      "LeaveRequest": {
-        "required": [
-          "userId",
-          "leaveTypeId",
-          "statusId",
-          "startDate",
-          "endDate",
-          "totalDays"
-        ],
-        "type": "object",
-        "properties": {
-          "leaveRequestId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
-            "format": "int32"
           },
           "userId": {
             "pattern": "^-?(?:0|[1-9]\\d*)$",
@@ -1355,6 +1298,12 @@
             ],
             "format": "int32"
           },
+          "userName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
           "leaveTypeId": {
             "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
@@ -1363,7 +1312,32 @@
             ],
             "format": "int32"
           },
-          "statusId": {
+          "leaveTypeName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "calendarYearId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "calendarYearName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      },
+      "LeaveRequestDTO": {
+        "type": "object",
+        "properties": {
+          "leaveRequestId": {
             "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "integer",
@@ -1388,17 +1362,53 @@
             "format": "int32"
           },
           "reason": {
-            "maxLength": 500,
-            "minLength": 0,
             "type": "string"
+          },
+          "userId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "userName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "leaveTypeId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "leaveTypeName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "statusId": {
+            "pattern": "^-?(?:0|[1-9]\\d*)$",
+            "type": [
+              "integer",
+              "string"
+            ],
+            "format": "int32"
+          },
+          "statusName": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         }
       },
-      "LeaveType": {
-        "required": [
-          "typeName",
-          "cssClass"
-        ],
+      "LeaveTypeDTO": {
         "type": "object",
         "properties": {
           "leaveTypeId": {
@@ -1409,20 +1419,18 @@
             ],
             "format": "int32"
           },
-          "typeName": {
-            "maxLength": 50,
+          "leaveTypeName": {
             "type": "string"
           },
           "cssClass": {
-            "maxLength": 50,
-            "type": "string"
+            "type": [
+              "null",
+              "string"
+            ]
           }
         }
       },
-      "Role": {
-        "required": [
-          "roleName"
-        ],
+      "RoleDTO": {
         "type": "object",
         "properties": {
           "roleId": {
@@ -1434,20 +1442,17 @@
             "format": "int32"
           },
           "roleName": {
-            "maxLength": 50,
             "type": "string"
           },
           "description": {
-            "maxLength": 100,
-            "type": "string"
+            "type": [
+              "null",
+              "string"
+            ]
           }
         }
       },
-      "Status": {
-        "required": [
-          "statusName",
-          "statusCssClass"
-        ],
+      "StatusDTO": {
         "type": "object",
         "properties": {
           "statusId": {
@@ -1459,23 +1464,17 @@
             "format": "int32"
           },
           "statusName": {
-            "maxLength": 20,
             "type": "string"
           },
           "statusCssClass": {
-            "maxLength": 50,
-            "type": "string"
+            "type": [
+              "null",
+              "string"
+            ]
           }
         }
       },
-      "User": {
-        "required": [
-          "roleId",
-          "fullName",
-          "email",
-          "password",
-          "profileImage"
-        ],
+      "UserDTO": {
         "type": "object",
         "properties": {
           "userId": {
@@ -1486,6 +1485,21 @@
             ],
             "format": "int32"
           },
+          "fullName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "profileImage": {
+            "type": "string"
+          },
           "roleId": {
             "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
@@ -1494,24 +1508,11 @@
             ],
             "format": "int32"
           },
-          "fullName": {
-            "maxLength": 100,
-            "type": "string"
-          },
-          "email": {
-            "maxLength": 100,
-            "type": "string"
-          },
-          "password": {
-            "maxLength": 50,
-            "type": "string"
-          },
-          "isActive": {
-            "type": "boolean"
-          },
-          "profileImage": {
-            "maxLength": 500,
-            "type": "string"
+          "roleName": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         }
       }
@@ -1520,6 +1521,9 @@
   "tags": [
     {
       "name": "CalendarYear"
+    },
+    {
+      "name": "Dashboard"
     },
     {
       "name": "LeaveApproval"

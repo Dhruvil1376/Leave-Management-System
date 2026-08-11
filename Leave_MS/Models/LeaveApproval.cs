@@ -20,11 +20,7 @@ namespace Leave_MS.Models
         [MaxLength(200)]
         public string Comments { get; set; } = string.Empty;
         public DateTime ActionDate {  get; set; } = DateTime.Now;
-
-        [JsonIgnore]
         public LeaveRequest? LeaveRequest { get; set; }
-
-        [JsonIgnore]
         public User? ApprovedByUser { get; set; }
     }
 }

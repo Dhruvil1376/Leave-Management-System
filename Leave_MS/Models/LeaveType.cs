@@ -13,10 +13,8 @@ namespace Leave_MS.Models
         [Required, MaxLength(50)]
         public string CssClass { get; set; } = string.Empty;
 
-        [JsonIgnore]
         public ICollection<LeaveBalance>? LeaveBalances { get; set; } = new List<LeaveBalance>();
 
-        [JsonIgnore]
         public ICollection<LeaveRequest>? LeaveRequests { get; set; } = new List<LeaveRequest>();
     }
 }

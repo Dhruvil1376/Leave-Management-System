@@ -1,5 +1,6 @@
 ﻿using Leave_MS.Data;
 using Leave_MS.Models;
+using Leave_MS.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,54 +18,122 @@ namespace Leave_MS.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetLeaveApprovals()
+        public async Task<IActionResult> GetAllLeaveApprovals()
         {
             var leaveApprovals = await _context.LeaveApprovals
-                .Include(lr=>lr.LeaveRequest)
-                .Include(u=>u.ApprovedByUser)
+                .Select(la => new LeaveApprovalDTO
+                {
+                    ApprovalId = la.ApprovalId,
+                    Action = la.Action,
+                    Comments = la.Comments,
+                    ActionDate = la.ActionDate,
+                    LeaveRequestId = la.LeaveRequestId,
+                    ApprovedBy = la.ApprovedBy,
+                    ApprovedByUserName = la.ApprovedByUser.FullName
+                })
                 .ToListAsync();
+
             return Ok(leaveApprovals);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetLeaveApproval(int id)
         {
-            var la = await _context.LeaveApprovals
-                .Include(lr => lr.LeaveRequest)
-                .Include(u => u.ApprovedByUser)
-                .FirstOrDefaultAsync(la=>la.ApprovalId==id);
+            var leaveApproval = await _context.LeaveApprovals
+                .Where(la => la.ApprovalId == id)
+                .Select(la => new LeaveApprovalDTO
+                {
+                    ApprovalId = la.ApprovalId,
+                    Action = la.Action,
+                    Comments = la.Comments,
+                    ActionDate = la.ActionDate,
+                    LeaveRequestId = la.LeaveRequestId,
+                    ApprovedBy = la.ApprovedBy,
+                    ApprovedByUserName = la.ApprovedByUser.FullName
+                })
+                .FirstOrDefaultAsync();
 
-            if (la == null)
+            if (leaveApproval == null)
                 return NotFound("Leave Approval not found!!!");
 
-            return Ok(la);
+            return Ok(leaveApproval);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateLeaveApproval(LeaveApproval la)
+        public async Task<IActionResult> CreateLeaveApproval(LeaveApprovalDTO la)
         {
-            if (!await _context.LeaveRequests.AnyAsync(lr => lr.LeaveRequestId == la.LeaveRequestId))
+            if (la == null)
+                return BadRequest("Leave Approval data is required!!!");
+
+            if (!await _context.LeaveRequests
+                .AnyAsync(lr => lr.LeaveRequestId == la.LeaveRequestId))
+            {
                 return BadRequest("Invalid Leave Request.");
+            }
 
-            if (!await _context.Users.AnyAsync(u => u.UserId == la.ApprovedBy))
+            if (!await _context.Users
+                .AnyAsync(u => u.UserId == la.ApprovedBy))
+            {
                 return BadRequest("Invalid User.");
+            }
 
-            _context.LeaveApprovals.Add(la);
+            var newLeaveApproval = new LeaveApproval
+            {
+                LeaveRequestId = la.LeaveRequestId,
+                ApprovedBy = la.ApprovedBy,
+                Action = la.Action,
+                Comments = la.Comments,
+                ActionDate = la.ActionDate
+            };
+
+            _context.LeaveApprovals.Add(newLeaveApproval);
             await _context.SaveChangesAsync();
 
-            return Ok(la);
+            var result = await _context.LeaveApprovals
+                .Where(x => x.ApprovalId == newLeaveApproval.ApprovalId)
+                .Select(x => new LeaveApprovalDTO
+                {
+                    ApprovalId = x.ApprovalId,
+                    Action = x.Action,
+                    Comments = x.Comments,
+                    ActionDate = x.ActionDate,
+                    LeaveRequestId = x.LeaveRequestId,
+                    ApprovedBy = x.ApprovedBy,
+                    ApprovedByUserName = x.ApprovedByUser.FullName
+                })
+                .FirstOrDefaultAsync();
+
+            return Ok(result);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateLeaveApproval(int id, LeaveApproval la)
+        public async Task<IActionResult> UpdateLeaveApproval(
+            int id,
+            LeaveApprovalDTO la)
         {
+            if (la == null)
+                return BadRequest("Leave Approval data is required!!!");
+
             if (id != la.ApprovalId)
                 return BadRequest("ID Mismatch!!!");
 
-            var oldLeaveApproval = await _context.LeaveApprovals.FindAsync(id);
+            var oldLeaveApproval = await _context.LeaveApprovals
+                .FindAsync(id);
 
             if (oldLeaveApproval == null)
                 return NotFound("Leave Approval not found!!!");
+
+            if (!await _context.LeaveRequests
+                .AnyAsync(lr => lr.LeaveRequestId == la.LeaveRequestId))
+            {
+                return BadRequest("Invalid Leave Request.");
+            }
+
+            if (!await _context.Users
+                .AnyAsync(u => u.UserId == la.ApprovedBy))
+            {
+                return BadRequest("Invalid User.");
+            }
 
             oldLeaveApproval.LeaveRequestId = la.LeaveRequestId;
             oldLeaveApproval.ApprovedBy = la.ApprovedBy;
@@ -74,13 +143,28 @@ namespace Leave_MS.Controllers
 
             await _context.SaveChangesAsync();
 
-            return Ok(oldLeaveApproval);
+            var updatedLeaveApproval = await _context.LeaveApprovals
+                .Where(x => x.ApprovalId == id)
+                .Select(x => new LeaveApprovalDTO
+                {
+                    ApprovalId = x.ApprovalId,
+                    Action = x.Action,
+                    Comments = x.Comments,
+                    ActionDate = x.ActionDate,
+                    LeaveRequestId = x.LeaveRequestId,
+                    ApprovedBy = x.ApprovedBy,
+                    ApprovedByUserName = x.ApprovedByUser.FullName
+                })
+                .FirstOrDefaultAsync();
+
+            return Ok(updatedLeaveApproval);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLeaveApproval(int id)
         {
-            var la = await _context.LeaveApprovals.FindAsync(id);
+            var la = await _context.LeaveApprovals
+                .FindAsync(id);
 
             if (la == null)
                 return NotFound("Leave Approval not found!!!");

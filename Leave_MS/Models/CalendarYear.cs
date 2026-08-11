@@ -15,8 +15,6 @@ namespace Leave_MS.Models
 
         [Required]
         public DateTime EndDate { get; set; }
-
-        [JsonIgnore]
         public ICollection<LeaveBalance>? LeaveBalances { get; set; } = new List<LeaveBalance>();
     }
 }

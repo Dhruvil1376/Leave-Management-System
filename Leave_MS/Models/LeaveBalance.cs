@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
 namespace Leave_MS.Models
 {
     public class LeaveBalance
@@ -21,14 +20,8 @@ namespace Leave_MS.Models
         public int AllocatedDays { get; set; }
 
         public int UsedDays { get; set; } = 0;
-
-        [JsonIgnore]
         public User? User { get; set; }
-
-        [JsonIgnore]
         public LeaveType? LeaveType { get; set; }
-
-        [JsonIgnore]
         public CalendarYear? CalendarYear { get; set; }
     }
 }

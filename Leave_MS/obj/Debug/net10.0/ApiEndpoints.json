@@ -9,7 +9,7 @@
     "Parameters": [
       {
         "Name": "calendarYear",
-        "Type": "Leave_MS.Models.CalendarYear",
+        "Type": "Leave_MS.DTOs.CalendarYearDTO",
         "IsRequired": true
       }
     ],
@@ -72,10 +72,20 @@
       },
       {
         "Name": "calendarYear",
-        "Type": "Leave_MS.Models.CalendarYear",
+        "Type": "Leave_MS.DTOs.CalendarYearDTO",
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "TotalEmployees",
+    "RelativePath": "api/Dashboard/TotalEmployees",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -88,7 +98,7 @@
     "Parameters": [
       {
         "Name": "la",
-        "Type": "Leave_MS.Models.LeaveApproval",
+        "Type": "Leave_MS.DTOs.LeaveApprovalDTO",
         "IsRequired": true
       }
     ],
@@ -112,6 +122,16 @@
   },
   {
     "ContainingType": "Leave_MS.Controllers.LeaveApprovalController",
+    "Method": "GetAllLeaveApprovals",
+    "RelativePath": "api/LeaveApproval/GetAllLeaveApprovals",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveApprovalController",
     "Method": "GetLeaveApproval",
     "RelativePath": "api/LeaveApproval/GetLeaveApproval/{id}",
     "HttpMethod": "GET",
@@ -124,16 +144,6 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Leave_MS.Controllers.LeaveApprovalController",
-    "Method": "GetLeaveApprovals",
-    "RelativePath": "api/LeaveApproval/GetLeaveApprovals",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -151,7 +161,7 @@
       },
       {
         "Name": "la",
-        "Type": "Leave_MS.Models.LeaveApproval",
+        "Type": "Leave_MS.DTOs.LeaveApprovalDTO",
         "IsRequired": true
       }
     ],
@@ -167,7 +177,7 @@
     "Parameters": [
       {
         "Name": "leaveBalance",
-        "Type": "Leave_MS.Models.LeaveBalance",
+        "Type": "Leave_MS.DTOs.LeaveBalanceDTO",
         "IsRequired": true
       }
     ],
@@ -191,6 +201,16 @@
   },
   {
     "ContainingType": "Leave_MS.Controllers.LeaveBalanceController",
+    "Method": "GetAllLeaveBalances",
+    "RelativePath": "api/LeaveBalance/GetAllLeaveBalances",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveBalanceController",
     "Method": "GetLeaveBalance",
     "RelativePath": "api/LeaveBalance/GetLeaveBalance/{id}",
     "HttpMethod": "GET",
@@ -203,16 +223,6 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Leave_MS.Controllers.LeaveBalanceController",
-    "Method": "GetLeaveBalances",
-    "RelativePath": "api/LeaveBalance/GetLeaveBalances",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -230,7 +240,7 @@
       },
       {
         "Name": "leaveBalance",
-        "Type": "Leave_MS.Models.LeaveBalance",
+        "Type": "Leave_MS.DTOs.LeaveBalanceDTO",
         "IsRequired": true
       }
     ],
@@ -246,7 +256,7 @@
     "Parameters": [
       {
         "Name": "lr",
-        "Type": "Leave_MS.Models.LeaveRequest",
+        "Type": "Leave_MS.DTOs.LeaveRequestDTO",
         "IsRequired": true
       }
     ],
@@ -270,6 +280,16 @@
   },
   {
     "ContainingType": "Leave_MS.Controllers.LeaveRequestController",
+    "Method": "GetAllLeaveRequests",
+    "RelativePath": "api/LeaveRequest/GetAllLeaveRequests",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveRequestController",
     "Method": "GetLeaveRequest",
     "RelativePath": "api/LeaveRequest/GetLeaveRequest/{id}",
     "HttpMethod": "GET",
@@ -282,16 +302,6 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Leave_MS.Controllers.LeaveRequestController",
-    "Method": "GetLeaveRequests",
-    "RelativePath": "api/LeaveRequest/GetLeaveRequests",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -309,7 +319,7 @@
       },
       {
         "Name": "lr",
-        "Type": "Leave_MS.Models.LeaveRequest",
+        "Type": "Leave_MS.DTOs.LeaveRequestDTO",
         "IsRequired": true
       }
     ],
@@ -325,21 +335,11 @@
     "Parameters": [
       {
         "Name": "lt",
-        "Type": "Leave_MS.Models.LeaveType",
+        "Type": "Leave_MS.DTOs.LeaveTypeDTO",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "Leave_MS.Models.LeaveType",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Leave_MS.Controllers.LeaveTypeController",
@@ -355,6 +355,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.LeaveTypeController",
+    "Method": "GetAllLeaveTypes",
+    "RelativePath": "api/LeaveType/GetAllLeaveTypes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -375,16 +385,6 @@
   },
   {
     "ContainingType": "Leave_MS.Controllers.LeaveTypeController",
-    "Method": "GetLeaveTypes",
-    "RelativePath": "api/LeaveType/GetLeaveTypes",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Leave_MS.Controllers.LeaveTypeController",
     "Method": "UpdateLeaveType",
     "RelativePath": "api/LeaveType/UpdateLeaveType/{id}",
     "HttpMethod": "PUT",
@@ -398,7 +398,7 @@
       },
       {
         "Name": "lt",
-        "Type": "Leave_MS.Models.LeaveType",
+        "Type": "Leave_MS.DTOs.LeaveTypeDTO",
         "IsRequired": true
       }
     ],
@@ -414,7 +414,7 @@
     "Parameters": [
       {
         "Name": "role",
-        "Type": "Leave_MS.Models.Role",
+        "Type": "Leave_MS.DTOs.RoleDTO",
         "IsRequired": true
       }
     ],
@@ -438,6 +438,16 @@
   },
   {
     "ContainingType": "Leave_MS.Controllers.RoleController",
+    "Method": "GetAllRoles",
+    "RelativePath": "api/Role/GetAllRoles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.RoleController",
     "Method": "GetRole",
     "RelativePath": "api/Role/GetRole/{id}",
     "HttpMethod": "GET",
@@ -450,16 +460,6 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Leave_MS.Controllers.RoleController",
-    "Method": "GetRoles",
-    "RelativePath": "api/Role/GetRoles",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -477,7 +477,7 @@
       },
       {
         "Name": "role",
-        "Type": "Leave_MS.Models.Role",
+        "Type": "Leave_MS.DTOs.RoleDTO",
         "IsRequired": true
       }
     ],
@@ -493,7 +493,7 @@
     "Parameters": [
       {
         "Name": "status",
-        "Type": "Leave_MS.Models.Status",
+        "Type": "Leave_MS.DTOs.StatusDTO",
         "IsRequired": true
       }
     ],
@@ -556,7 +556,7 @@
       },
       {
         "Name": "status",
-        "Type": "Leave_MS.Models.Status",
+        "Type": "Leave_MS.DTOs.StatusDTO",
         "IsRequired": true
       }
     ],
@@ -572,7 +572,7 @@
     "Parameters": [
       {
         "Name": "user",
-        "Type": "Leave_MS.Models.User",
+        "Type": "Leave_MS.DTOs.UserDTO",
         "IsRequired": true
       }
     ],
@@ -596,6 +596,16 @@
   },
   {
     "ContainingType": "Leave_MS.Controllers.UserController",
+    "Method": "GetAllUsers",
+    "RelativePath": "api/User/GetAllUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.UserController",
     "Method": "GetUser",
     "RelativePath": "api/User/GetUser/{id}",
     "HttpMethod": "GET",
@@ -608,16 +618,6 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Leave_MS.Controllers.UserController",
-    "Method": "GetUsers",
-    "RelativePath": "api/User/GetUsers",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -635,7 +635,7 @@
       },
       {
         "Name": "user",
-        "Type": "Leave_MS.Models.User",
+        "Type": "Leave_MS.DTOs.UserDTO",
         "IsRequired": true
       }
     ],

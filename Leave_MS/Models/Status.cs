@@ -12,8 +12,6 @@ namespace Leave_MS.Models
 
         [Required,MaxLength(50)]
         public string StatusCssClass { get; set; } = string.Empty;
-
-        [JsonIgnore]
         public ICollection<LeaveRequest>? LeaveRequests { get; set; } = new List<LeaveRequest>();
     }
 }

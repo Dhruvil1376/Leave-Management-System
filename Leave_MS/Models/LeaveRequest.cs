@@ -28,17 +28,9 @@ namespace Leave_MS.Models
 
         [StringLength(500)]
         public string Reason { get; set; } = string.Empty;
-
-        [JsonIgnore]
         public User? User { get; set; }
-
-        [JsonIgnore]
         public LeaveType? LeaveType { get; set; }
-
-        [JsonIgnore]
         public Status? Status { get; set; }
-
-        [JsonIgnore]
         public ICollection<LeaveApproval>? LeaveApprovals { get; set; } = new List<LeaveApproval>();
     }
 }

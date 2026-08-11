@@ -1,6 +1,6 @@
 ﻿using Leave_MS.Data;
 using Leave_MS.Models;
-using Microsoft.AspNetCore.Http;
+using Leave_MS.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,56 +18,159 @@ namespace Leave_MS.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetLeaveRequests()
+        public async Task<IActionResult> GetAllLeaveRequests()
         {
-            var lr = await _context.LeaveRequests
-                .Include(u=>u.User)
-                .Include(lt=>lt.LeaveType)
-                .Include(s => s.Status)
+            var leaveRequests = await _context.LeaveRequests
+                .Select(lr => new LeaveRequestDTO
+                {
+                    LeaveRequestId = lr.LeaveRequestId,
+                    StartDate = lr.StartDate,
+                    EndDate = lr.EndDate,
+                    TotalDays = lr.TotalDays,
+                    Reason = lr.Reason,
+
+                    UserId = lr.UserId,
+                    UserName = lr.User.FullName,
+
+                    LeaveTypeId = lr.LeaveTypeId,
+                    LeaveTypeName = lr.LeaveType.TypeName,
+
+                    StatusId = lr.StatusId,
+                    StatusName = lr.Status.StatusName
+                })
                 .ToListAsync();
-            return Ok(lr);
+
+            return Ok(leaveRequests);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetLeaveRequest(int id)
         {
-            var lr = await _context.LeaveRequests
-                .Include(u => u.User)
-                .Include(lt => lt.LeaveType)
-                .Include(s=>s.Status)
-                .FirstOrDefaultAsync(lr=>lr.LeaveRequestId==id);
+            var leaveRequest = await _context.LeaveRequests
+                .Where(lr => lr.LeaveRequestId == id)
+                .Select(lr => new LeaveRequestDTO
+                {
+                    LeaveRequestId = lr.LeaveRequestId,
+                    StartDate = lr.StartDate,
+                    EndDate = lr.EndDate,
+                    TotalDays = lr.TotalDays,
+                    Reason = lr.Reason,
 
-            if (lr == null)
+                    UserId = lr.UserId,
+                    UserName = lr.User.FullName,
+
+                    LeaveTypeId = lr.LeaveTypeId,
+                    LeaveTypeName = lr.LeaveType.TypeName,
+
+                    StatusId = lr.StatusId,
+                    StatusName = lr.Status.StatusName
+                })
+                .FirstOrDefaultAsync();
+
+            if (leaveRequest == null)
                 return NotFound("Leave Request Not Found!!!");
 
-            return Ok(lr);
+            return Ok(leaveRequest);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateLeaveRequest(LeaveRequest lr)
+        public async Task<IActionResult> CreateLeaveRequest(LeaveRequestDTO lr)
         {
+            if (lr == null)
+                return BadRequest("Leave Request data is required!!!");
+
             if (lr.StartDate > lr.EndDate)
                 return BadRequest("Start Date cannot be greater than End Date!!!");
 
-            _context.LeaveRequests.Add(lr);
+            // Check User
+            if (!await _context.Users.AnyAsync(u => u.UserId == lr.UserId))
+                return BadRequest("Invalid UserId!!!");
+
+            // Check Leave Type
+            if (!await _context.LeaveTypes
+                .AnyAsync(lt => lt.LeaveTypeId == lr.LeaveTypeId))
+            {
+                return BadRequest("Invalid LeaveTypeId!!!");
+            }
+
+            // Check Status
+            if (!await _context.Statuses
+                .AnyAsync(s => s.StatusId == lr.StatusId))
+            {
+                return BadRequest("Invalid StatusId!!!");
+            }
+
+            var newLeaveRequest = new LeaveRequest
+            {
+                UserId = lr.UserId,
+                LeaveTypeId = lr.LeaveTypeId,
+                StatusId = lr.StatusId,
+                StartDate = lr.StartDate,
+                EndDate = lr.EndDate,
+                Reason = lr.Reason,
+                TotalDays = lr.TotalDays
+            };
+
+            _context.LeaveRequests.Add(newLeaveRequest);
             await _context.SaveChangesAsync();
 
-            return Ok(lr);
+            var result = await _context.LeaveRequests
+                .Where(x => x.LeaveRequestId == newLeaveRequest.LeaveRequestId)
+                .Select(x => new LeaveRequestDTO
+                {
+                    LeaveRequestId = x.LeaveRequestId,
+                    StartDate = x.StartDate,
+                    EndDate = x.EndDate,
+                    TotalDays = x.TotalDays,
+                    Reason = x.Reason,
+
+                    UserId = x.UserId,
+                    UserName = x.User.FullName,
+
+                    LeaveTypeId = x.LeaveTypeId,
+                    LeaveTypeName = x.LeaveType.TypeName,
+
+                    StatusId = x.StatusId,
+                    StatusName = x.Status.StatusName
+                })
+                .FirstOrDefaultAsync();
+
+            return Ok(result);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateLeaveRequest(int id, LeaveRequest lr)
+        public async Task<IActionResult> UpdateLeaveRequest(
+            int id,
+            LeaveRequestDTO lr)
         {
+            if (lr == null)
+                return BadRequest("Leave Request data is required!!!");
+
             if (id != lr.LeaveRequestId)
                 return BadRequest("ID Mismatch!!!");
+
+            if (lr.StartDate > lr.EndDate)
+                return BadRequest("Start Date cannot be greater than End Date!!!");
 
             var oldRequest = await _context.LeaveRequests.FindAsync(id);
 
             if (oldRequest == null)
                 return NotFound("Leave Request not found!!!");
 
-            if (lr.StartDate > lr.EndDate)
-                return BadRequest("Start Date cannot be greater than End Date!!!");
+            if (!await _context.Users.AnyAsync(u => u.UserId == lr.UserId))
+                return BadRequest("Invalid UserId!!!");
+
+            if (!await _context.LeaveTypes
+                .AnyAsync(lt => lt.LeaveTypeId == lr.LeaveTypeId))
+            {
+                return BadRequest("Invalid LeaveTypeId!!!");
+            }
+
+            if (!await _context.Statuses
+                .AnyAsync(s => s.StatusId == lr.StatusId))
+            {
+                return BadRequest("Invalid StatusId!!!");
+            }
 
             oldRequest.UserId = lr.UserId;
             oldRequest.LeaveTypeId = lr.LeaveTypeId;
@@ -79,7 +182,28 @@ namespace Leave_MS.Controllers
 
             await _context.SaveChangesAsync();
 
-            return Ok(oldRequest);
+            var updatedRequest = await _context.LeaveRequests
+                .Where(x => x.LeaveRequestId == id)
+                .Select(x => new LeaveRequestDTO
+                {
+                    LeaveRequestId = x.LeaveRequestId,
+                    StartDate = x.StartDate,
+                    EndDate = x.EndDate,
+                    TotalDays = x.TotalDays,
+                    Reason = x.Reason,
+
+                    UserId = x.UserId,
+                    UserName = x.User.FullName,
+
+                    LeaveTypeId = x.LeaveTypeId,
+                    LeaveTypeName = x.LeaveType.TypeName,
+
+                    StatusId = x.StatusId,
+                    StatusName = x.Status.StatusName
+                })
+                .FirstOrDefaultAsync();
+
+            return Ok(updatedRequest);
         }
 
         [HttpDelete("{id}")]
@@ -95,6 +219,5 @@ namespace Leave_MS.Controllers
 
             return Ok("Leave Request Deleted Successfully!!!");
         }
-
     }
 }

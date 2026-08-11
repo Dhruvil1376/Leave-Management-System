@@ -1,7 +1,20 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\B.TECH\\SEM-5\\.NET_Core\\Leave Management System\\Leave_MS\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|d:\\b.tech\\sem-5\\.net_core\\leave management system\\leave_ms\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|solutionrelative:controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|d:\\b.tech\\sem-5\\.net_core\\leave management system\\leave_ms\\models\\leavebalance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|solutionrelative:models\\leavebalance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|d:\\b.tech\\sem-5\\.net_core\\leave management system\\leave_ms\\models\\leaveapproval.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38150355-813C-D4AF-A7F0-45352C182CD6}|Leave_MS.csproj|solutionrelative:models\\leaveapproval.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -9,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,6 +59,45 @@
             {
               "$type": "Bookmark",
               "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LeaveBalance.cs",
+              "DocumentMoniker": "D:\\B.TECH\\SEM-5\\.NET_Core\\Leave Management System\\Leave_MS\\Models\\LeaveBalance.cs",
+              "RelativeDocumentMoniker": "Models\\LeaveBalance.cs",
+              "ToolTip": "D:\\B.TECH\\SEM-5\\.NET_Core\\Leave Management System\\Leave_MS\\Models\\LeaveBalance.cs",
+              "RelativeToolTip": "Models\\LeaveBalance.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAgwBoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T17:19:43.43Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LeaveApproval.cs",
+              "DocumentMoniker": "D:\\B.TECH\\SEM-5\\.NET_Core\\Leave Management System\\Leave_MS\\Models\\LeaveApproval.cs",
+              "RelativeDocumentMoniker": "Models\\LeaveApproval.cs",
+              "ToolTip": "D:\\B.TECH\\SEM-5\\.NET_Core\\Leave Management System\\Leave_MS\\Models\\LeaveApproval.cs",
+              "RelativeToolTip": "Models\\LeaveApproval.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T17:19:34.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "D:\\B.TECH\\SEM-5\\.NET_Core\\Leave Management System\\Leave_MS\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DashboardController.cs",
+              "ToolTip": "D:\\B.TECH\\SEM-5\\.NET_Core\\Leave Management System\\Leave_MS\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "Controllers\\DashboardController.cs",
+              "ViewState": "AgIAAKkAAAAAAAAAAAAuwIAAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T05:28:45.667Z",
+              "EditorCaption": ""
             }
           ]
         }
