@@ -1,4 +1,4 @@
-﻿using Leave_MS.Data;
+using Leave_MS.Data;
 using Leave_MS.Models;
 using Leave_MS.DTOs;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +20,7 @@ namespace Leave_MS.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllStatus()
         {
-            var status=await _context.Statuses
+            var status = await _context.Statuses
                 .Select(s => new StatusDTO
                 {
                     StatusId = s.StatusId,
@@ -28,7 +28,12 @@ namespace Leave_MS.Controllers
                     StatusCssClass = s.StatusCssClass
                 })
                 .ToListAsync();
-            return Ok(status);
+            return Ok(new ApiResponse<List<StatusDTO>>
+            {
+                Success = true,
+                Message = "Statuses retrieved successfully",
+                Data = status
+            });
         }
 
         [HttpGet("{id}")]
@@ -45,22 +50,55 @@ namespace Leave_MS.Controllers
                 .FirstOrDefaultAsync();
 
             if (status == null)
-                return NotFound("Status not found!!!");
+            {
+                return NotFound(new ApiResponse<StatusDTO>
+                {
+                    Success = false,
+                    Message = "Status not found!!!",
+                    Data = null
+                });
+            }
 
-            return Ok(status);
+            return Ok(new ApiResponse<StatusDTO>
+            {
+                Success = true,
+                Message = "Status retrieved successfully",
+                Data = status
+            });
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateStatus(StatusDTO status)
         {
             if (status == null)
-                return BadRequest("Status data is required!!!");
+            {
+                return BadRequest(new ApiResponse<StatusDTO>
+                {
+                    Success = false,
+                    Message = "Status data is required!!!",
+                    Data = null
+                });
+            }
 
             if (string.IsNullOrWhiteSpace(status.StatusName))
-                return BadRequest("Status name is required!!!");
+            {
+                return BadRequest(new ApiResponse<StatusDTO>
+                {
+                    Success = false,
+                    Message = "Status name is required!!!",
+                    Data = null
+                });
+            }
 
             if (await _context.Statuses.AnyAsync(s => s.StatusName == status.StatusName))
-                return BadRequest("Status already exists!!!");
+            {
+                return BadRequest(new ApiResponse<StatusDTO>
+                {
+                    Success = false,
+                    Message = "Status already exists!!!",
+                    Data = null
+                });
+            }
 
             var newStatus = new Status()
             {
@@ -71,29 +109,74 @@ namespace Leave_MS.Controllers
             _context.Statuses.Add(newStatus);
             await _context.SaveChangesAsync();
 
-            return Ok(newStatus);
+            var result = new StatusDTO
+            {
+                StatusId = newStatus.StatusId,
+                StatusName = newStatus.StatusName,
+                StatusCssClass = newStatus.StatusCssClass
+            };
+
+            return Ok(new ApiResponse<StatusDTO>
+            {
+                Success = true,
+                Message = "Status created successfully",
+                Data = result
+            });
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateStatus(int id, StatusDTO status)
         {
             if (status == null)
-                return BadRequest("Status data is required!!!");
+            {
+                return BadRequest(new ApiResponse<StatusDTO>
+                {
+                    Success = false,
+                    Message = "Status data is required!!!",
+                    Data = null
+                });
+            }
 
             if (string.IsNullOrWhiteSpace(status.StatusName))
-                return BadRequest("Status name is required!!!");
+            {
+                return BadRequest(new ApiResponse<StatusDTO>
+                {
+                    Success = false,
+                    Message = "Status name is required!!!",
+                    Data = null
+                });
+            }
 
             var existingStatus = await _context.Statuses.FindAsync(id);
 
             if (existingStatus == null)
-                return NotFound("Invalid ID");
+            {
+                return NotFound(new ApiResponse<StatusDTO>
+                {
+                    Success = false,
+                    Message = "Invalid ID",
+                    Data = null
+                });
+            }
 
             existingStatus.StatusName = status.StatusName;
             existingStatus.StatusCssClass = status.StatusCssClass;
 
             await _context.SaveChangesAsync();
 
-            return Ok(existingStatus);
+            var result = new StatusDTO
+            {
+                StatusId = existingStatus.StatusId,
+                StatusName = existingStatus.StatusName,
+                StatusCssClass = existingStatus.StatusCssClass
+            };
+
+            return Ok(new ApiResponse<StatusDTO>
+            {
+                Success = true,
+                Message = "Status updated successfully",
+                Data = result
+            });
         }
 
         [HttpDelete("{id}")]
@@ -102,12 +185,24 @@ namespace Leave_MS.Controllers
             var status = await _context.Statuses.FindAsync(id);
 
             if (status == null)
-                return NotFound("Invalid ID");
+            {
+                return NotFound(new ApiResponse<object>
+                {
+                    Success = false,
+                    Message = "Invalid ID",
+                    Data = null
+                });
+            }
 
             _context.Statuses.Remove(status);
             await _context.SaveChangesAsync();
 
-            return Ok("Status Deleted Successfully!!!");
+            return Ok(new ApiResponse<object>
+            {
+                Success = true,
+                Message = "Status Deleted Successfully!!!",
+                Data = null
+            });
         }
     }
 }

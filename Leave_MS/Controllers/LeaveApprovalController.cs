@@ -1,4 +1,4 @@
-﻿using Leave_MS.Data;
+using Leave_MS.Data;
 using Leave_MS.Models;
 using Leave_MS.DTOs;
 using Microsoft.AspNetCore.Mvc;
@@ -33,7 +33,12 @@ namespace Leave_MS.Controllers
                 })
                 .ToListAsync();
 
-            return Ok(leaveApprovals);
+            return Ok(new ApiResponse<List<LeaveApprovalDTO>>
+            {
+                Success = true,
+                Message = "Leave approvals retrieved successfully",
+                Data = leaveApprovals
+            });
         }
 
         [HttpGet("{id}")]
@@ -54,27 +59,56 @@ namespace Leave_MS.Controllers
                 .FirstOrDefaultAsync();
 
             if (leaveApproval == null)
-                return NotFound("Leave Approval not found!!!");
+            {
+                return NotFound(new ApiResponse<LeaveApprovalDTO>
+                {
+                    Success = false,
+                    Message = "Leave Approval not found!!!",
+                    Data = null
+                });
+            }
 
-            return Ok(leaveApproval);
+            return Ok(new ApiResponse<LeaveApprovalDTO>
+            {
+                Success = true,
+                Message = "Leave approval retrieved successfully",
+                Data = leaveApproval
+            });
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateLeaveApproval(LeaveApprovalDTO la)
         {
             if (la == null)
-                return BadRequest("Leave Approval data is required!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveApprovalDTO>
+                {
+                    Success = false,
+                    Message = "Leave Approval data is required!!!",
+                    Data = null
+                });
+            }
 
             if (!await _context.LeaveRequests
                 .AnyAsync(lr => lr.LeaveRequestId == la.LeaveRequestId))
             {
-                return BadRequest("Invalid Leave Request.");
+                return BadRequest(new ApiResponse<LeaveApprovalDTO>
+                {
+                    Success = false,
+                    Message = "Invalid Leave Request.",
+                    Data = null
+                });
             }
 
             if (!await _context.Users
                 .AnyAsync(u => u.UserId == la.ApprovedBy))
             {
-                return BadRequest("Invalid User.");
+                return BadRequest(new ApiResponse<LeaveApprovalDTO>
+                {
+                    Success = false,
+                    Message = "Invalid User.",
+                    Data = null
+                });
             }
 
             var newLeaveApproval = new LeaveApproval
@@ -103,7 +137,12 @@ namespace Leave_MS.Controllers
                 })
                 .FirstOrDefaultAsync();
 
-            return Ok(result);
+            return Ok(new ApiResponse<LeaveApprovalDTO>
+            {
+                Success = true,
+                Message = "Leave approval created successfully",
+                Data = result
+            });
         }
 
         [HttpPut("{id}")]
@@ -112,27 +151,58 @@ namespace Leave_MS.Controllers
             LeaveApprovalDTO la)
         {
             if (la == null)
-                return BadRequest("Leave Approval data is required!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveApprovalDTO>
+                {
+                    Success = false,
+                    Message = "Leave Approval data is required!!!",
+                    Data = null
+                });
+            }
 
             if (id != la.ApprovalId)
-                return BadRequest("ID Mismatch!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveApprovalDTO>
+                {
+                    Success = false,
+                    Message = "ID Mismatch!!!",
+                    Data = null
+                });
+            }
 
             var oldLeaveApproval = await _context.LeaveApprovals
                 .FindAsync(id);
 
             if (oldLeaveApproval == null)
-                return NotFound("Leave Approval not found!!!");
+            {
+                return NotFound(new ApiResponse<LeaveApprovalDTO>
+                {
+                    Success = false,
+                    Message = "Leave Approval not found!!!",
+                    Data = null
+                });
+            }
 
             if (!await _context.LeaveRequests
                 .AnyAsync(lr => lr.LeaveRequestId == la.LeaveRequestId))
             {
-                return BadRequest("Invalid Leave Request.");
+                return BadRequest(new ApiResponse<LeaveApprovalDTO>
+                {
+                    Success = false,
+                    Message = "Invalid Leave Request.",
+                    Data = null
+                });
             }
 
             if (!await _context.Users
                 .AnyAsync(u => u.UserId == la.ApprovedBy))
             {
-                return BadRequest("Invalid User.");
+                return BadRequest(new ApiResponse<LeaveApprovalDTO>
+                {
+                    Success = false,
+                    Message = "Invalid User.",
+                    Data = null
+                });
             }
 
             oldLeaveApproval.LeaveRequestId = la.LeaveRequestId;
@@ -157,7 +227,12 @@ namespace Leave_MS.Controllers
                 })
                 .FirstOrDefaultAsync();
 
-            return Ok(updatedLeaveApproval);
+            return Ok(new ApiResponse<LeaveApprovalDTO>
+            {
+                Success = true,
+                Message = "Leave approval updated successfully",
+                Data = updatedLeaveApproval
+            });
         }
 
         [HttpDelete("{id}")]
@@ -167,12 +242,24 @@ namespace Leave_MS.Controllers
                 .FindAsync(id);
 
             if (la == null)
-                return NotFound("Leave Approval not found!!!");
+            {
+                return NotFound(new ApiResponse<object>
+                {
+                    Success = false,
+                    Message = "Leave Approval not found!!!",
+                    Data = null
+                });
+            }
 
             _context.LeaveApprovals.Remove(la);
             await _context.SaveChangesAsync();
 
-            return Ok("Leave Approval Deleted Successfully!!!");
+            return Ok(new ApiResponse<object>
+            {
+                Success = true,
+                Message = "Leave Approval Deleted Successfully!!!",
+                Data = null
+            });
         }
     }
 }

@@ -80,8 +80,278 @@
   },
   {
     "ContainingType": "Leave_MS.Controllers.DashboardController",
-    "Method": "TotalEmployees",
-    "RelativePath": "api/Dashboard/TotalEmployees",
+    "Method": "GetActiveUsers",
+    "RelativePath": "api/Dashboard/active-users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetCompleteDashboard",
+    "RelativePath": "api/Dashboard/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetApproverWorkload",
+    "RelativePath": "api/Dashboard/approver-workload",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetBottom10LeaveUsers",
+    "RelativePath": "api/Dashboard/bottom-10-leave-users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetEmployeeApprovalStatistics",
+    "RelativePath": "api/Dashboard/employee-approval-statistics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetEmployeeDashboard",
+    "RelativePath": "api/Dashboard/employee-dashboard",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetEmployeeLeaveBalances",
+    "RelativePath": "api/Dashboard/employee-leave-balances",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetEmployeeLeaveRequests",
+    "RelativePath": "api/Dashboard/employee-leave-requests",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetEmployeeLeaveStatistics",
+    "RelativePath": "api/Dashboard/employee-leave-statistics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetEmployeeLeaveUtilization",
+    "RelativePath": "api/Dashboard/employee-leave-utilization",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetLeaveStatusSummary",
+    "RelativePath": "api/Dashboard/leave-status-summary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetLeaveTypeDays",
+    "RelativePath": "api/Dashboard/leave-type-days",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetLeaveTypeEmployees",
+    "RelativePath": "api/Dashboard/leave-type-employees",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetLeaveTypeSummary",
+    "RelativePath": "api/Dashboard/leave-type-summary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetLeavesDueWithin7Days",
+    "RelativePath": "api/Dashboard/leaves-due-within-7-days",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetLowLeaveBalances",
+    "RelativePath": "api/Dashboard/low-leave-balances",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetMonthlyApprovedLeaves",
+    "RelativePath": "api/Dashboard/monthly-approved-leaves",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetMonthlyLeaveRequests",
+    "RelativePath": "api/Dashboard/monthly-leave-requests",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetOverdueLeaveRequests",
+    "RelativePath": "api/Dashboard/overdue-leave-requests",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetRoleStatistics",
+    "RelativePath": "api/Dashboard/role-statistics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetRoleWiseActiveUsers",
+    "RelativePath": "api/Dashboard/role-wise-active-users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetRolesMoreThan10Users",
+    "RelativePath": "api/Dashboard/roles-more-than-10-users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetTop10LeaveTypes",
+    "RelativePath": "api/Dashboard/top-10-leave-types",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetTop10LeaveUsers",
+    "RelativePath": "api/Dashboard/top-10-leave-users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetTotalLeaveRequests",
+    "RelativePath": "api/Dashboard/total-leave-requests",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetTotalUsers",
+    "RelativePath": "api/Dashboard/total-users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetUpcomingLeaves",
+    "RelativePath": "api/Dashboard/upcoming-leaves",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Leave_MS.Controllers.DashboardController",
+    "Method": "GetUsersByRole",
+    "RelativePath": "api/Dashboard/users-by-role",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

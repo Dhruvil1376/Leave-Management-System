@@ -1,4 +1,4 @@
-﻿using Leave_MS.Data;
+using Leave_MS.Data;
 using Leave_MS.Models;
 using Leave_MS.DTOs;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +30,12 @@ namespace Leave_MS.Controllers
                 })
                 .ToListAsync();
 
-            return Ok(calendarYears);
+            return Ok(new ApiResponse<List<CalendarYearDTO>>
+            {
+                Success = true,
+                Message = "Calendar years retrieved successfully",
+                Data = calendarYears
+            });
         }
 
         [HttpGet("{id}")]
@@ -48,9 +53,21 @@ namespace Leave_MS.Controllers
                 .FirstOrDefaultAsync();
 
             if (calendarYear == null)
-                return NotFound("Calendar Year not found!!!");
+            {
+                return NotFound(new ApiResponse<CalendarYearDTO>
+                {
+                    Success = false,
+                    Message = "Calendar Year not found!!!",
+                    Data = null
+                });
+            }
 
-            return Ok(calendarYear);
+            return Ok(new ApiResponse<CalendarYearDTO>
+            {
+                Success = true,
+                Message = "Calendar year retrieved successfully",
+                Data = calendarYear
+            });
         }
 
         [HttpPost]
@@ -58,19 +75,44 @@ namespace Leave_MS.Controllers
             CalendarYearDTO calendarYear)
         {
             if (calendarYear == null)
-                return BadRequest("Calendar Year data is required!!!");
+            {
+                return BadRequest(new ApiResponse<CalendarYearDTO>
+                {
+                    Success = false,
+                    Message = "Calendar Year data is required!!!",
+                    Data = null
+                });
+            }
 
             if (string.IsNullOrWhiteSpace(calendarYear.CalendarYearName))
-                return BadRequest("Calendar Year Name is required!!!");
+            {
+                return BadRequest(new ApiResponse<CalendarYearDTO>
+                {
+                    Success = false,
+                    Message = "Calendar Year Name is required!!!",
+                    Data = null
+                });
+            }
 
             if (calendarYear.StartDate > calendarYear.EndDate)
-                return BadRequest(
-                    "Start Date cannot be greater than End Date!!!");
+            {
+                return BadRequest(new ApiResponse<CalendarYearDTO>
+                {
+                    Success = false,
+                    Message = "Start Date cannot be greater than End Date!!!",
+                    Data = null
+                });
+            }
 
             if (await _context.CalendarYears.AnyAsync(c =>
                 c.CalendarYearName == calendarYear.CalendarYearName))
             {
-                return BadRequest("Calendar Year already exists!!!");
+                return BadRequest(new ApiResponse<CalendarYearDTO>
+                {
+                    Success = false,
+                    Message = "Calendar Year already exists!!!",
+                    Data = null
+                });
             }
 
             var newCalendarYear = new CalendarYear
@@ -91,7 +133,12 @@ namespace Leave_MS.Controllers
                 EndDate = newCalendarYear.EndDate
             };
 
-            return Ok(result);
+            return Ok(new ApiResponse<CalendarYearDTO>
+            {
+                Success = true,
+                Message = "Calendar year created successfully",
+                Data = result
+            });
         }
 
         [HttpPut("{id}")]
@@ -100,26 +147,58 @@ namespace Leave_MS.Controllers
             CalendarYearDTO calendarYear)
         {
             if (calendarYear == null)
-                return BadRequest("Calendar Year data is required!!!");
+            {
+                return BadRequest(new ApiResponse<CalendarYearDTO>
+                {
+                    Success = false,
+                    Message = "Calendar Year data is required!!!",
+                    Data = null
+                });
+            }
 
             if (id != calendarYear.CalendarYearId)
-                return BadRequest("ID Mismatch!!!");
+            {
+                return BadRequest(new ApiResponse<CalendarYearDTO>
+                {
+                    Success = false,
+                    Message = "ID Mismatch!!!",
+                    Data = null
+                });
+            }
 
             var oldCalendarYear = await _context.CalendarYears
                 .FindAsync(id);
 
             if (oldCalendarYear == null)
-                return NotFound("Calendar Year not found!!!");
+            {
+                return NotFound(new ApiResponse<CalendarYearDTO>
+                {
+                    Success = false,
+                    Message = "Calendar Year not found!!!",
+                    Data = null
+                });
+            }
 
             if (calendarYear.StartDate > calendarYear.EndDate)
-                return BadRequest(
-                    "Start Date cannot be greater than End Date!!!");
+            {
+                return BadRequest(new ApiResponse<CalendarYearDTO>
+                {
+                    Success = false,
+                    Message = "Start Date cannot be greater than End Date!!!",
+                    Data = null
+                });
+            }
 
             if (await _context.CalendarYears.AnyAsync(c =>
                 c.CalendarYearName == calendarYear.CalendarYearName &&
                 c.CalendarYearId != id))
             {
-                return BadRequest("Calendar Year already exists!!!");
+                return BadRequest(new ApiResponse<CalendarYearDTO>
+                {
+                    Success = false,
+                    Message = "Calendar Year already exists!!!",
+                    Data = null
+                });
             }
 
             oldCalendarYear.CalendarYearName =
@@ -141,7 +220,12 @@ namespace Leave_MS.Controllers
                 EndDate = oldCalendarYear.EndDate
             };
 
-            return Ok(result);
+            return Ok(new ApiResponse<CalendarYearDTO>
+            {
+                Success = true,
+                Message = "Calendar year updated successfully",
+                Data = result
+            });
         }
 
         [HttpDelete("{id}")]
@@ -151,13 +235,25 @@ namespace Leave_MS.Controllers
                 .FindAsync(id);
 
             if (calendarYear == null)
-                return NotFound("Calendar Year not found!!!");
+            {
+                return NotFound(new ApiResponse<object>
+                {
+                    Success = false,
+                    Message = "Calendar Year not found!!!",
+                    Data = null
+                });
+            }
 
             _context.CalendarYears.Remove(calendarYear);
 
             await _context.SaveChangesAsync();
 
-            return Ok("Deleted Successfully!!!");
+            return Ok(new ApiResponse<object>
+            {
+                Success = true,
+                Message = "Deleted Successfully!!!",
+                Data = null
+            });
         }
     }
 }

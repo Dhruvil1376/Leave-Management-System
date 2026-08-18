@@ -1,4 +1,4 @@
-﻿using Leave_MS.Data;
+using Leave_MS.Data;
 using Leave_MS.Models;
 using Leave_MS.DTOs;
 using Microsoft.AspNetCore.Mvc;
@@ -32,7 +32,13 @@ namespace Leave_MS.Controllers
                     RoleName = u.Role.RoleName
                 })
                 .ToListAsync();
-            return Ok(users);
+
+            return Ok(new ApiResponse<List<UserDTO>>
+            {
+                Success = true,
+                Message = "Users retrieved successfully",
+                Data = users
+            });
         }
 
         [HttpGet("{id}")]
@@ -55,16 +61,35 @@ namespace Leave_MS.Controllers
                 .FirstOrDefaultAsync();
 
             if (user == null)
-                return NotFound();
+            {
+                return NotFound(new ApiResponse<UserDTO>
+                {
+                    Success = false,
+                    Message = "User not found",
+                    Data = null
+                });
+            }
 
-            return Ok(user);
+            return Ok(new ApiResponse<UserDTO>
+            {
+                Success = true,
+                Message = "User retrieved successfully",
+                Data = user
+            });
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateUser(UserDTO user)
         {
             if (user == null)
-                return BadRequest("User data is required!!!");
+            {
+                return BadRequest(new ApiResponse<UserDTO>
+                {
+                    Success = false,
+                    Message = "User data is required!!!",
+                    Data = null
+                });
+            }
 
             var newUser = new User()
             {
@@ -79,25 +104,82 @@ namespace Leave_MS.Controllers
             _context.Users.Add(newUser);
             await _context.SaveChangesAsync();
 
-            return Ok(newUser);
+            var createdUser = await _context.Users
+                .Where(u => u.UserId == newUser.UserId)
+                .Select(u => new UserDTO
+                {
+                    UserId = u.UserId,
+                    FullName = u.FullName,
+                    Email = u.Email,
+                    IsActive = u.isActive,
+                    ProfileImage = u.ProfileImage,
+                    RoleId = u.RoleId,
+                    RoleName = u.Role != null ? u.Role.RoleName : null
+                })
+                .FirstOrDefaultAsync();
+
+            return Ok(new ApiResponse<UserDTO>
+            {
+                Success = true,
+                Message = "User created successfully",
+                Data = createdUser
+            });
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, UserDTO user)
         {
+            if (user == null)
+            {
+                return BadRequest(new ApiResponse<UserDTO>
+                {
+                    Success = false,
+                    Message = "User data is required!!!",
+                    Data = null
+                });
+            }
+
             if (id != user.UserId)
-                return BadRequest("ID Mismatch!!!");
+            {
+                return BadRequest(new ApiResponse<UserDTO>
+                {
+                    Success = false,
+                    Message = "ID Mismatch!!!",
+                    Data = null
+                });
+            }
 
             var oldUser = await _context.Users.FindAsync(id);            
 
             if (oldUser == null)
-                return NotFound("User not found!!!");
+            {
+                return NotFound(new ApiResponse<UserDTO>
+                {
+                    Success = false,
+                    Message = "User not found!!!",
+                    Data = null
+                });
+            }
 
             if (await _context.Users.AnyAsync(u => u.Email == user.Email && u.UserId != id))
-                return BadRequest("Email already exists!!!");
+            {
+                return BadRequest(new ApiResponse<UserDTO>
+                {
+                    Success = false,
+                    Message = "Email already exists!!!",
+                    Data = null
+                });
+            }
 
             if (!await _context.Roles.AnyAsync(r => r.RoleId == user.RoleId))
-                return BadRequest("Invalid RoleId!!!");
+            {
+                return BadRequest(new ApiResponse<UserDTO>
+                {
+                    Success = false,
+                    Message = "Invalid RoleId!!!",
+                    Data = null
+                });
+            }
 
             oldUser.FullName = user.FullName;
             oldUser.Email = user.Email;
@@ -121,7 +203,12 @@ namespace Leave_MS.Controllers
                 })
                 .FirstOrDefaultAsync();
 
-            return Ok(updatedUser);
+            return Ok(new ApiResponse<UserDTO>
+            {
+                Success = true,
+                Message = "User updated successfully",
+                Data = updatedUser
+            });
         }
 
         [HttpDelete("{id}")]
@@ -130,12 +217,24 @@ namespace Leave_MS.Controllers
             var user = await _context.Users.FindAsync(id);
 
             if (user == null)
-                return NotFound();
+            {
+                return NotFound(new ApiResponse<object>
+                {
+                    Success = false,
+                    Message = "User not found",
+                    Data = null
+                });
+            }
 
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
 
-            return Ok("User Deleted Successfully!!!");
+            return Ok(new ApiResponse<object>
+            {
+                Success = true,
+                Message = "User Deleted Successfully!!!",
+                Data = null
+            });
         }
     }
 }

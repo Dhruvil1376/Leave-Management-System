@@ -1,4 +1,4 @@
-﻿using Leave_MS.Data;
+using Leave_MS.Data;
 using Leave_MS.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -29,7 +29,12 @@ namespace Leave_MS.Controllers
                 })
                 .ToListAsync();
 
-            return Ok(leaveTypes);
+            return Ok(new ApiResponse<List<LeaveTypeDTO>>
+            {
+                Success = true,
+                Message = "Leave types retrieved successfully",
+                Data = leaveTypes
+            });
         }
 
         [HttpGet("{id}")]
@@ -47,25 +52,54 @@ namespace Leave_MS.Controllers
 
             if (leaveType == null)
             {
-                return NotFound("Leave Type not found!!!");
+                return NotFound(new ApiResponse<LeaveTypeDTO>
+                {
+                    Success = false,
+                    Message = "Leave Type not found!!!",
+                    Data = null
+                });
             }
 
-            return Ok(leaveType);
+            return Ok(new ApiResponse<LeaveTypeDTO>
+            {
+                Success = true,
+                Message = "Leave type retrieved successfully",
+                Data = leaveType
+            });
         }
 
         [HttpPost]
         public async Task<IActionResult> AddLeaveType(LeaveTypeDTO lt)
         {
             if (lt == null)
-                return BadRequest("Leave Type data is required!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveTypeDTO>
+                {
+                    Success = false,
+                    Message = "Leave Type data is required!!!",
+                    Data = null
+                });
+            }
 
             if (string.IsNullOrWhiteSpace(lt.LeaveTypeName))
-                return BadRequest("Leave Type Name is required!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveTypeDTO>
+                {
+                    Success = false,
+                    Message = "Leave Type Name is required!!!",
+                    Data = null
+                });
+            }
 
             if (await _context.LeaveTypes
                 .AnyAsync(n => n.TypeName == lt.LeaveTypeName))
             {
-                return BadRequest("Leave Type Already Exists!!!");
+                return BadRequest(new ApiResponse<LeaveTypeDTO>
+                {
+                    Success = false,
+                    Message = "Leave Type Already Exists!!!",
+                    Data = null
+                });
             }
 
             var newLeaveType = new LeaveType
@@ -84,7 +118,12 @@ namespace Leave_MS.Controllers
                 CssClass = newLeaveType.CssClass
             };
 
-            return Ok(result);
+            return Ok(new ApiResponse<LeaveTypeDTO>
+            {
+                Success = true,
+                Message = "Leave type created successfully",
+                Data = result
+            });
         }
 
         [HttpPut("{id}")]
@@ -93,21 +132,47 @@ namespace Leave_MS.Controllers
             LeaveTypeDTO lt)
         {
             if (lt == null)
-                return BadRequest("Leave Type data is required!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveTypeDTO>
+                {
+                    Success = false,
+                    Message = "Leave Type data is required!!!",
+                    Data = null
+                });
+            }
 
             if (id != lt.LeaveTypeId)
-                return BadRequest("ID Mismatch!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveTypeDTO>
+                {
+                    Success = false,
+                    Message = "ID Mismatch!!!",
+                    Data = null
+                });
+            }
 
             var oldLeaveType = await _context.LeaveTypes.FindAsync(id);
 
             if (oldLeaveType == null)
-                return NotFound("Leave Type not found!!!");
+            {
+                return NotFound(new ApiResponse<LeaveTypeDTO>
+                {
+                    Success = false,
+                    Message = "Leave Type not found!!!",
+                    Data = null
+                });
+            }
 
             if (await _context.LeaveTypes.AnyAsync(n =>
                 n.TypeName == lt.LeaveTypeName &&
                 n.LeaveTypeId != id))
             {
-                return BadRequest("Leave Type Already Exists!!!");
+                return BadRequest(new ApiResponse<LeaveTypeDTO>
+                {
+                    Success = false,
+                    Message = "Leave Type Already Exists!!!",
+                    Data = null
+                });
             }
 
             oldLeaveType.TypeName = lt.LeaveTypeName;
@@ -122,7 +187,12 @@ namespace Leave_MS.Controllers
                 CssClass = oldLeaveType.CssClass
             };
 
-            return Ok(result);
+            return Ok(new ApiResponse<LeaveTypeDTO>
+            {
+                Success = true,
+                Message = "Leave type updated successfully",
+                Data = result
+            });
         }
 
         [HttpDelete("{id}")]
@@ -132,14 +202,24 @@ namespace Leave_MS.Controllers
 
             if (leaveType == null)
             {
-                return NotFound("Invalid Leave Type ID!!!");
+                return NotFound(new ApiResponse<object>
+                {
+                    Success = false,
+                    Message = "Invalid Leave Type ID!!!",
+                    Data = null
+                });
             }
 
             _context.LeaveTypes.Remove(leaveType);
 
             await _context.SaveChangesAsync();
 
-            return Ok("Leave Type Deleted Successfully!!!");
+            return Ok(new ApiResponse<object>
+            {
+                Success = true,
+                Message = "Leave Type Deleted Successfully!!!",
+                Data = null
+            });
         }
     }
 }

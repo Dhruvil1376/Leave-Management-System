@@ -1,4 +1,4 @@
-﻿using Leave_MS.Data;
+using Leave_MS.Data;
 using Leave_MS.Models;
 using Leave_MS.DTOs;
 using Microsoft.AspNetCore.Mvc;
@@ -38,7 +38,12 @@ namespace Leave_MS.Controllers
                 })
                 .ToListAsync();
 
-            return Ok(leaveBalances);
+            return Ok(new ApiResponse<List<LeaveBalanceDTO>>
+            {
+                Success = true,
+                Message = "Leave balances retrieved successfully",
+                Data = leaveBalances
+            });
         }
 
         [HttpGet("{id}")]
@@ -64,9 +69,21 @@ namespace Leave_MS.Controllers
                 .FirstOrDefaultAsync();
 
             if (leaveBalance == null)
-                return NotFound("Leave Balance Not Found!!!");
+            {
+                return NotFound(new ApiResponse<LeaveBalanceDTO>
+                {
+                    Success = false,
+                    Message = "Leave Balance Not Found!!!",
+                    Data = null
+                });
+            }
 
-            return Ok(leaveBalance);
+            return Ok(new ApiResponse<LeaveBalanceDTO>
+            {
+                Success = true,
+                Message = "Leave balance retrieved successfully",
+                Data = leaveBalance
+            });
         }
 
         [HttpPost]
@@ -74,34 +91,76 @@ namespace Leave_MS.Controllers
             LeaveBalanceDTO leaveBalance)
         {
             if (leaveBalance == null)
-                return BadRequest("Leave Balance data is required!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveBalanceDTO>
+                {
+                    Success = false,
+                    Message = "Leave Balance data is required!!!",
+                    Data = null
+                });
+            }
 
             if (leaveBalance.AllocatedDays < 0)
-                return BadRequest("Allocated Days cannot be negative!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveBalanceDTO>
+                {
+                    Success = false,
+                    Message = "Allocated Days cannot be negative!!!",
+                    Data = null
+                });
+            }
 
             if (leaveBalance.UsedDays < 0)
-                return BadRequest("Used Days cannot be negative!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveBalanceDTO>
+                {
+                    Success = false,
+                    Message = "Used Days cannot be negative!!!",
+                    Data = null
+                });
+            }
 
             if (leaveBalance.UsedDays > leaveBalance.AllocatedDays)
-                return BadRequest(
-                    "Used Days cannot be greater than Allocated Days!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveBalanceDTO>
+                {
+                    Success = false,
+                    Message = "Used Days cannot be greater than Allocated Days!!!",
+                    Data = null
+                });
+            }
 
             if (!await _context.Users
                 .AnyAsync(u => u.UserId == leaveBalance.UserId))
             {
-                return BadRequest("Invalid UserId!!!");
+                return BadRequest(new ApiResponse<LeaveBalanceDTO>
+                {
+                    Success = false,
+                    Message = "Invalid UserId!!!",
+                    Data = null
+                });
             }
 
             if (!await _context.LeaveTypes
                 .AnyAsync(lt => lt.LeaveTypeId == leaveBalance.LeaveTypeId))
             {
-                return BadRequest("Invalid LeaveTypeId!!!");
+                return BadRequest(new ApiResponse<LeaveBalanceDTO>
+                {
+                    Success = false,
+                    Message = "Invalid LeaveTypeId!!!",
+                    Data = null
+                });
             }
 
             if (!await _context.CalendarYears
                 .AnyAsync(cy => cy.CalendarYearId == leaveBalance.CalendarYearId))
             {
-                return BadRequest("Invalid CalendarYearId!!!");
+                return BadRequest(new ApiResponse<LeaveBalanceDTO>
+                {
+                    Success = false,
+                    Message = "Invalid CalendarYearId!!!",
+                    Data = null
+                });
             }
 
             if (await _context.LeaveBalances.AnyAsync(lb =>
@@ -109,7 +168,12 @@ namespace Leave_MS.Controllers
                 lb.LeaveTypeId == leaveBalance.LeaveTypeId &&
                 lb.CalendarYearId == leaveBalance.CalendarYearId))
             {
-                return BadRequest("Leave balance already exists!!!");
+                return BadRequest(new ApiResponse<LeaveBalanceDTO>
+                {
+                    Success = false,
+                    Message = "Leave balance already exists!!!",
+                    Data = null
+                });
             }
 
             var newLeaveBalance = new LeaveBalance
@@ -143,7 +207,12 @@ namespace Leave_MS.Controllers
                 })
                 .FirstOrDefaultAsync();
 
-            return Ok(result);
+            return Ok(new ApiResponse<LeaveBalanceDTO>
+            {
+                Success = true,
+                Message = "Leave balance created successfully",
+                Data = result
+            });
         }
 
         [HttpPut("{id}")]
@@ -152,43 +221,99 @@ namespace Leave_MS.Controllers
             LeaveBalanceDTO leaveBalance)
         {
             if (leaveBalance == null)
-                return BadRequest("Leave Balance data is required!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveBalanceDTO>
+                {
+                    Success = false,
+                    Message = "Leave Balance data is required!!!",
+                    Data = null
+                });
+            }
 
             if (id != leaveBalance.LeaveBalanceId)
-                return BadRequest("ID Mismatch!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveBalanceDTO>
+                {
+                    Success = false,
+                    Message = "ID Mismatch!!!",
+                    Data = null
+                });
+            }
 
             var oldLeaveBalance = await _context.LeaveBalances
                 .FindAsync(id);
 
             if (oldLeaveBalance == null)
-                return NotFound("Leave Balance not found!!!");
+            {
+                return NotFound(new ApiResponse<LeaveBalanceDTO>
+                {
+                    Success = false,
+                    Message = "Leave Balance not found!!!",
+                    Data = null
+                });
+            }
 
             if (leaveBalance.AllocatedDays < 0)
-                return BadRequest("Allocated Days cannot be negative!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveBalanceDTO>
+                {
+                    Success = false,
+                    Message = "Allocated Days cannot be negative!!!",
+                    Data = null
+                });
+            }
 
             if (leaveBalance.UsedDays < 0)
-                return BadRequest("Used Days cannot be negative!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveBalanceDTO>
+                {
+                    Success = false,
+                    Message = "Used Days cannot be negative!!!",
+                    Data = null
+                });
+            }
 
             if (leaveBalance.UsedDays > leaveBalance.AllocatedDays)
-                return BadRequest(
-                    "Used Days cannot be greater than Allocated Days!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveBalanceDTO>
+                {
+                    Success = false,
+                    Message = "Used Days cannot be greater than Allocated Days!!!",
+                    Data = null
+                });
+            }
 
             if (!await _context.Users
                 .AnyAsync(u => u.UserId == leaveBalance.UserId))
             {
-                return BadRequest("Invalid UserId!!!");
+                return BadRequest(new ApiResponse<LeaveBalanceDTO>
+                {
+                    Success = false,
+                    Message = "Invalid UserId!!!",
+                    Data = null
+                });
             }
 
             if (!await _context.LeaveTypes
                 .AnyAsync(lt => lt.LeaveTypeId == leaveBalance.LeaveTypeId))
             {
-                return BadRequest("Invalid LeaveTypeId!!!");
+                return BadRequest(new ApiResponse<LeaveBalanceDTO>
+                {
+                    Success = false,
+                    Message = "Invalid LeaveTypeId!!!",
+                    Data = null
+                });
             }
 
             if (!await _context.CalendarYears
                 .AnyAsync(cy => cy.CalendarYearId == leaveBalance.CalendarYearId))
             {
-                return BadRequest("Invalid CalendarYearId!!!");
+                return BadRequest(new ApiResponse<LeaveBalanceDTO>
+                {
+                    Success = false,
+                    Message = "Invalid CalendarYearId!!!",
+                    Data = null
+                });
             }
 
             if (await _context.LeaveBalances.AnyAsync(lb =>
@@ -197,7 +322,12 @@ namespace Leave_MS.Controllers
                 lb.CalendarYearId == leaveBalance.CalendarYearId &&
                 lb.LeaveBalanceId != id))
             {
-                return BadRequest("Leave balance already exists!!!");
+                return BadRequest(new ApiResponse<LeaveBalanceDTO>
+                {
+                    Success = false,
+                    Message = "Leave balance already exists!!!",
+                    Data = null
+                });
             }
 
             oldLeaveBalance.UserId = leaveBalance.UserId;
@@ -227,7 +357,12 @@ namespace Leave_MS.Controllers
                 })
                 .FirstOrDefaultAsync();
 
-            return Ok(updatedLeaveBalance);
+            return Ok(new ApiResponse<LeaveBalanceDTO>
+            {
+                Success = true,
+                Message = "Leave balance updated successfully",
+                Data = updatedLeaveBalance
+            });
         }
 
         [HttpDelete("{id}")]
@@ -237,12 +372,24 @@ namespace Leave_MS.Controllers
                 .FindAsync(id);
 
             if (leaveBalance == null)
-                return NotFound("Leave Balance not found!!!");
+            {
+                return NotFound(new ApiResponse<object>
+                {
+                    Success = false,
+                    Message = "Leave Balance not found!!!",
+                    Data = null
+                });
+            }
 
             _context.LeaveBalances.Remove(leaveBalance);
             await _context.SaveChangesAsync();
 
-            return Ok("Leave Balance Deleted Successfully!!!");
+            return Ok(new ApiResponse<object>
+            {
+                Success = true,
+                Message = "Leave Balance Deleted Successfully!!!",
+                Data = null
+            });
         }
     }
 }

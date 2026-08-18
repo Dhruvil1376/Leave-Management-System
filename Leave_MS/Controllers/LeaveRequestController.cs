@@ -1,4 +1,4 @@
-﻿using Leave_MS.Data;
+using Leave_MS.Data;
 using Leave_MS.Models;
 using Leave_MS.DTOs;
 using Microsoft.AspNetCore.Mvc;
@@ -40,7 +40,12 @@ namespace Leave_MS.Controllers
                 })
                 .ToListAsync();
 
-            return Ok(leaveRequests);
+            return Ok(new ApiResponse<List<LeaveRequestDTO>>
+            {
+                Success = true,
+                Message = "Leave requests retrieved successfully",
+                Data = leaveRequests
+            });
         }
 
         [HttpGet("{id}")]
@@ -68,36 +73,79 @@ namespace Leave_MS.Controllers
                 .FirstOrDefaultAsync();
 
             if (leaveRequest == null)
-                return NotFound("Leave Request Not Found!!!");
+            {
+                return NotFound(new ApiResponse<LeaveRequestDTO>
+                {
+                    Success = false,
+                    Message = "Leave Request Not Found!!!",
+                    Data = null
+                });
+            }
 
-            return Ok(leaveRequest);
+            return Ok(new ApiResponse<LeaveRequestDTO>
+            {
+                Success = true,
+                Message = "Leave request retrieved successfully",
+                Data = leaveRequest
+            });
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateLeaveRequest(LeaveRequestDTO lr)
         {
             if (lr == null)
-                return BadRequest("Leave Request data is required!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveRequestDTO>
+                {
+                    Success = false,
+                    Message = "Leave Request data is required!!!",
+                    Data = null
+                });
+            }
 
             if (lr.StartDate > lr.EndDate)
-                return BadRequest("Start Date cannot be greater than End Date!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveRequestDTO>
+                {
+                    Success = false,
+                    Message = "Start Date cannot be greater than End Date!!!",
+                    Data = null
+                });
+            }
 
             // Check User
             if (!await _context.Users.AnyAsync(u => u.UserId == lr.UserId))
-                return BadRequest("Invalid UserId!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveRequestDTO>
+                {
+                    Success = false,
+                    Message = "Invalid UserId!!!",
+                    Data = null
+                });
+            }
 
             // Check Leave Type
             if (!await _context.LeaveTypes
                 .AnyAsync(lt => lt.LeaveTypeId == lr.LeaveTypeId))
             {
-                return BadRequest("Invalid LeaveTypeId!!!");
+                return BadRequest(new ApiResponse<LeaveRequestDTO>
+                {
+                    Success = false,
+                    Message = "Invalid LeaveTypeId!!!",
+                    Data = null
+                });
             }
 
             // Check Status
             if (!await _context.Statuses
                 .AnyAsync(s => s.StatusId == lr.StatusId))
             {
-                return BadRequest("Invalid StatusId!!!");
+                return BadRequest(new ApiResponse<LeaveRequestDTO>
+                {
+                    Success = false,
+                    Message = "Invalid StatusId!!!",
+                    Data = null
+                });
             }
 
             var newLeaveRequest = new LeaveRequest
@@ -135,7 +183,12 @@ namespace Leave_MS.Controllers
                 })
                 .FirstOrDefaultAsync();
 
-            return Ok(result);
+            return Ok(new ApiResponse<LeaveRequestDTO>
+            {
+                Success = true,
+                Message = "Leave request created successfully",
+                Data = result
+            });
         }
 
         [HttpPut("{id}")]
@@ -144,32 +197,77 @@ namespace Leave_MS.Controllers
             LeaveRequestDTO lr)
         {
             if (lr == null)
-                return BadRequest("Leave Request data is required!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveRequestDTO>
+                {
+                    Success = false,
+                    Message = "Leave Request data is required!!!",
+                    Data = null
+                });
+            }
 
             if (id != lr.LeaveRequestId)
-                return BadRequest("ID Mismatch!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveRequestDTO>
+                {
+                    Success = false,
+                    Message = "ID Mismatch!!!",
+                    Data = null
+                });
+            }
 
             if (lr.StartDate > lr.EndDate)
-                return BadRequest("Start Date cannot be greater than End Date!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveRequestDTO>
+                {
+                    Success = false,
+                    Message = "Start Date cannot be greater than End Date!!!",
+                    Data = null
+                });
+            }
 
             var oldRequest = await _context.LeaveRequests.FindAsync(id);
 
             if (oldRequest == null)
-                return NotFound("Leave Request not found!!!");
+            {
+                return NotFound(new ApiResponse<LeaveRequestDTO>
+                {
+                    Success = false,
+                    Message = "Leave Request not found!!!",
+                    Data = null
+                });
+            }
 
             if (!await _context.Users.AnyAsync(u => u.UserId == lr.UserId))
-                return BadRequest("Invalid UserId!!!");
+            {
+                return BadRequest(new ApiResponse<LeaveRequestDTO>
+                {
+                    Success = false,
+                    Message = "Invalid UserId!!!",
+                    Data = null
+                });
+            }
 
             if (!await _context.LeaveTypes
                 .AnyAsync(lt => lt.LeaveTypeId == lr.LeaveTypeId))
             {
-                return BadRequest("Invalid LeaveTypeId!!!");
+                return BadRequest(new ApiResponse<LeaveRequestDTO>
+                {
+                    Success = false,
+                    Message = "Invalid LeaveTypeId!!!",
+                    Data = null
+                });
             }
 
             if (!await _context.Statuses
                 .AnyAsync(s => s.StatusId == lr.StatusId))
             {
-                return BadRequest("Invalid StatusId!!!");
+                return BadRequest(new ApiResponse<LeaveRequestDTO>
+                {
+                    Success = false,
+                    Message = "Invalid StatusId!!!",
+                    Data = null
+                });
             }
 
             oldRequest.UserId = lr.UserId;
@@ -203,7 +301,12 @@ namespace Leave_MS.Controllers
                 })
                 .FirstOrDefaultAsync();
 
-            return Ok(updatedRequest);
+            return Ok(new ApiResponse<LeaveRequestDTO>
+            {
+                Success = true,
+                Message = "Leave request updated successfully",
+                Data = updatedRequest
+            });
         }
 
         [HttpDelete("{id}")]
@@ -212,12 +315,24 @@ namespace Leave_MS.Controllers
             var lr = await _context.LeaveRequests.FindAsync(id);
 
             if (lr == null)
-                return NotFound("Leave Request not found!!!");
+            {
+                return NotFound(new ApiResponse<object>
+                {
+                    Success = false,
+                    Message = "Leave Request not found!!!",
+                    Data = null
+                });
+            }
 
             _context.LeaveRequests.Remove(lr);
             await _context.SaveChangesAsync();
 
-            return Ok("Leave Request Deleted Successfully!!!");
+            return Ok(new ApiResponse<object>
+            {
+                Success = true,
+                Message = "Leave Request Deleted Successfully!!!",
+                Data = null
+            });
         }
     }
 }
